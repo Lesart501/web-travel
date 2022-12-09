@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('country');
             $table->integer('people');
             $table->integer('nights');
-            $table->binary('img');
+            $table->string('image');
             $table->foreignId('operators_id')->constrained('operators','id')->cascadeOnDelete();
             $table->integer('price');
             $table->timestamps();
