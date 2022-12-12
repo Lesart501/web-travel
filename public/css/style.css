@@ -1,0 +1,22 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.home_pic{
+    background: url(../img/main_pics/mainPic5.jpg);
+    width: 100vw;
+    height: 70vh;
+    padding-top: 18vh;
+    padding-left: 5vw;
+}
+.pic_text{
+    width: 60vw;
+    height: 20vh;
+}
+
+.all_tours{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vh;
+    width: 60vw;
+}
