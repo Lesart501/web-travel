@@ -4,9 +4,10 @@ html, body{
 }
 
 .home_pic{
-    background: url(../img/main_pics/mainPic5.jpg);
-    width: 100vw;
-    height: 70vh;
+    background: url(../img/main_pics/mainPic6.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 80vh;
     padding-top: 18vh;
     padding-left: 5vw;
 }

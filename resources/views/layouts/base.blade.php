@@ -18,12 +18,20 @@
                     </svg>
                 </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="{{ route('index') }}" class="nav-link px-2 text-secondary">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                    <li><a href="{{ route('index') }}" class="nav-link px-2 text-secondary">Главная</a></li>
+                    @auth<li><a href="{{ route('home') }}" class="nav-link px-2 text-white">Личный кабинет</a></li>@endauth
                 </ul>
                 <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Login</button>
-                    <button type="button" class="btn btn-primary">Sign-up</button>
+                    @guest
+                    <a href="{{ route('login') }}" class="btn btn-primary me-2">Войти</a>
+                    <a href="{{ route('register') }}" class="btn btn-outline-light">Регистрация</a>
+                    @endguest
+                    @auth
+                    <form action="{{ route('logout') }}" method="POST" class="form-inline">
+                        @csrf
+                        <input type="submit" class="btn btn-primary" value="Выйти">
+                    </form>
+                    @endauth
                 </div>
             </div>
         </div>

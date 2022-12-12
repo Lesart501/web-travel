@@ -41,12 +41,12 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        $tourNames = ['Сиде', 'Севастополь', 'Шарм-Эль-Шейх', 'Адлер', 'Рим', 'Банкок'];
+        $tourNames = ['Сиде', 'Севастополь', 'Шарм-Эль-Шейх', 'Адлер', 'Рим', 'Бангкок'];
         $countries = ['Турция','Россия','Египет','Россия','Италия','Тайланд'];
         $people = [2, 1, 1, 2, 2, 1];
         $nights = [6, 6, 4, 6, 14, 13];
         // Заполнить картинки
-        $images = ['18.11.2022', '18.11.2022', '18.11.2022', '18.11.2022', '18.11.2022', '18.11.2022'];// Заполнить картинки
+        $images = ['img/tours_images/side2.jpeg', 'img/tours_images/crimea_is_our2.jpg', 'img/tours_images/shesh1.jpg', 'img/tours_images/adler1.jpg', 'img/tours_images/rome1.jpg', 'img/tours_images/bangkok.jpg'];
         $operators_id = [1, 2, 3, 3, 2, 1];
         $price = [21306, 17352, 42936, 19889, 67786, 49026];
         for ($i = 0; $i <  count($tourNames); $i++){
