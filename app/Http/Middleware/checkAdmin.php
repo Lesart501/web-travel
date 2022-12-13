@@ -18,8 +18,8 @@ class checkAdmin
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->status === 'Admin')
-            return $next($request);
+            return redirect('admin');
         else
-            return redirect('home');
+            return $next($request);
     }
 }
