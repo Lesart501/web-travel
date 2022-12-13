@@ -19,9 +19,19 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
 
+Route::get('/', [HomeController::class, 'book'])->name('book');
+
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('admin');
 
-Route::get('/home/add', [AdminController::class, 'addTourForm'])->name('tour.add');
-Route::post('/home', [AdminController::class, 'saveTour'])->name('tour.save');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+// Починить всё
+Route::get('/admin/add', [AdminController::class, 'addTourForm'])->name('tour.add');
+Route::post('/admin', [AdminController::class, 'saveTour'])->name('tour.save');
+
+Route::get('/admin/edit', [AdminController::class, 'editTourForm'])->name('tour.edit');
+Route::post('/admin', [AdminController::class, 'updateTour'])->name('tour.update');
+
+Route::get('/admin/delete', [AdminController::class, 'deleteTourForm'])->name('tour.delete');
+Route::post('/admin', [AdminController::class, 'destroyTour'])->name('tour.destroy');

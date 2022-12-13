@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="txtTitle">Изображение</label>
-                                <input type="file" name="image" id="txtTitle" class="form-control">
+                                <input type="file" name="image" id="image " class="form-control" enctype="multipart/form-data">
                             </div>
                             <div class="form-group">
                                 <label for="txtTitle">ID туроператора</label>
@@ -39,7 +39,7 @@
                                 <label for="txtTitle">Цена</label>
                                 <input type="number" name="price" id="txtTitle" class="form-control">
                             </div>
-                            <input type="submit" class="btn btn-primary" value="Добавить">
+                            <input type="submit" class="btn btn-primary mt-2" value="Добавить">
                         </form>
                     </div>
                 </div>
