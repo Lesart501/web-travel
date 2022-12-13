@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('status')->default('В обработке');
             $table->foreignId('users_id')->constrained('users','id')->cascadeOnDelete();
             $table->foreignId('tours_id')->constrained('tours','id')->cascadeOnDelete();
-            // $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->date('out_date');
             $table->date('return_date');
             $table->timestamps();

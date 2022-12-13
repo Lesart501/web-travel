@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th scope="col">Дата оформления</th>
+                <th scope="col">Статус</th>
                 <th scope="col">Тур</th>
                 <th scope="col">Ночей</th>
                 <th scope="col">Человек</th>
@@ -21,12 +22,13 @@
             @foreach($orders as $order)
                 <tr>
                     <th scope="row">{{ $order->created_at }}</th>
+                    <td>{{ $order->status }}</td>
                     <td>{{ $order->tour->name }}, {{ $order->tour->country }}</td>
                     <td>{{ $order->tour->nights }}</td>
                     <td>{{ $order->tour->people }}</td>
                     <td>{{ $order->out_date }}</td>
                     <td>{{ $order->return_date }}</td>
-                    <td>{{ $order->tour->price }}</td>
+                    <td>{{ $order->tour->price }} р.</td>
                 </tr>
             @endforeach
         </tbody>
