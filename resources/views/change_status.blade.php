@@ -9,14 +9,15 @@
             <div class="card">
                 <div class="card-header">Добавить тур</div>
                 <div class="card-body">
-                    <form action="{{ route('status.save') }}" method="POST">
+                    <form action="{{ route('status.save', ['order' => $order->id]) }}" enctype="multipart/form-data" method="POST">
                         @csrf
+                        @method('PATCH')
                         <select class="form-select" name="status" aria-label="Default select example">
                             <option value="В обработке">В обработке</option>
                             <option value="Принята">Принята</option>
                             <option value="Отклонена">Отклонена</option>
                         </select>
-                        <input type="submit" class="btn btn-primary mt-2" value="Добавить">
+                        <input type="submit" class="btn btn-primary mt-2" value="Подтвердить">
                     </form>
                 </div>
             </div>

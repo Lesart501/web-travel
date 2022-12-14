@@ -68,6 +68,3 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Примечание разработчика:
 
 Всё говно, нихера не работает
-                        
-                        <a href="{{ route('tour.edit') }}" class="btn btn-warning">Редактировать</a>
-                        <a href="{{ route('tour.delete') }}" class="btn btn-danger">Удалить</a>

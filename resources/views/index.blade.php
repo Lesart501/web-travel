@@ -17,7 +17,7 @@
             <div class="d-grid all_tours">
                 @foreach($tours as $tour)
                     <div class="card" style="width: 20rem;">
-                        <img class="card-img-top" src="{{$tour->image}}">
+                        <img class="card-img-top" src="storage/uploads/{{$tour->image}}">
                         <div class="card-body">
                             <h5 class="card-title">{{$tour->name}}, {{$tour->country}}</h5>
                             <p class="card-text">{{$tour->nights}} ночей, {{$tour->people}} человека</p>
@@ -26,7 +26,7 @@
                             <a href="{{ route('login') }}" class="btn btn-primary">Забронировать</a>
                             @endguest
                             @auth
-                            <a href="{{ route('login') }}" class="btn btn-primary">Забронировать</a> <!-- Добавить возможность бронирования -->
+                            <a href="{{ route('book.form', ['tour' => $tour->id]) }}" class="btn btn-primary">Забронировать</a>
                             @endauth
                         </div>
                     </div>

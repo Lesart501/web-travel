@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.admin_base')
 
 @section('title', 'Добавить тур')
 
@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Добавить тур</div>
                     <div class="card-body">
-                        <form action="{{ route('tour.save') }}" method="POST">
+                        <form action="{{ route('tour.save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="txtTitle">Название</label>
