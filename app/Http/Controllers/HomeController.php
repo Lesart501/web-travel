@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Tour;
 use App\Models\Order;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -30,7 +31,15 @@ class HomeController extends Controller
         return view('home', ['orders' => Auth::user()->order()->latest()->get()]);
     }
     // Сделать бронь
+    
+    public function bookForm(Tour $tour) {
+        return view('book', ['tour' => $tour]);
+    }
     public function book(Request $request, Tour $tour){
-        Order::create(['users_id', 'tours_id', 'out_date', 'return_date']);
+        $id = Auth::user()->id;
+        $out_date = Carbon::parse($request->out_date);
+        $return_date = $out_date->addDays($tour->nights);
+        Order::create(['users_id' => $id, 'tours_id' => $tour->id, 'out_date' => $out_date, 'return_date' => $return_date]);
+        return redirect()->route('home');
     }
 }

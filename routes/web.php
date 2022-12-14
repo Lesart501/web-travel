@@ -19,7 +19,8 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
 
-Route::get('/home/{tour}', [HomeController::class, 'book'])->name('book');
+Route::get('/home/{tour}/book', [HomeController::class, 'bookForm'])->name('book.form');
+Route::post('/home/{tour}', [HomeController::class, 'book'])->name('book');
 
 Auth::routes();
 
@@ -29,14 +30,14 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
 
-Route::get('/orders/{order}', [AdminController::class, 'chStatusForm'])->name('status.change');
-Route::post('/orders', [AdminController::class, 'saveStatus'])->name('status.save');
+Route::get('/orders/{order}/change', [AdminController::class, 'chStatusForm'])->name('status.change');
+Route::patch('/orders/{order}', [AdminController::class, 'saveStatus'])->name('status.save');
 // Починить всё
-Route::get('/admin/add', [AdminController::class, 'addTourForm'])->name('tour.add');
-Route::post('/admin', [AdminController::class, 'saveTour'])->name('tour.save');
+Route::get('/admin/add/form', [AdminController::class, 'addTourForm'])->name('tour.add');
+Route::post('/admin/add', [AdminController::class, 'saveTour'])->name('tour.save');
 
-// Route::get('/admin/edit', [AdminController::class, 'editTourForm'])->name('tour.edit');
-// Route::post('/admin', [AdminController::class, 'updateTour'])->name('tour.update');
+Route::get('/admin/{tour}/edit/form', [AdminController::class, 'editTourForm'])->name('tour.edit');
+Route::patch('/admin/{tour}/edit', [AdminController::class, 'updateTour'])->name('tour.update');
 
-// Route::get('/admin/delete', [AdminController::class, 'deleteTourForm'])->name('tour.delete');
-// Route::post('/admin', [AdminController::class, 'destroyTour'])->name('tour.destroy');
+Route::get('/admin/{tour}/delete', [AdminController::class, 'deleteTourForm'])->name('tour.delete');
+Route::post('/admin/{tour}', [AdminController::class, 'destroyTour'])->name('tour.destroy');
