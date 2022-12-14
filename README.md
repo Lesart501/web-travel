@@ -65,4 +65,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-Примечание разработчика: Всё говно, нихера не работает
+## Примечание разработчика:
+
+Всё говно, нихера не работает
+                        
+                        <a href="{{ route('tour.edit') }}" class="btn btn-warning">Редактировать</a>
+                        <a href="{{ route('tour.delete') }}" class="btn btn-danger">Удалить</a>

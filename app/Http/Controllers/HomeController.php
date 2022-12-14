@@ -31,6 +31,6 @@ class HomeController extends Controller
     }
     // Сделать бронь
     public function book(Request $request, Tour $tour){
-        Order::create([]);
+        Order::create(['users_id', 'tours_id', 'out_date', 'return_date']);
     }
 }

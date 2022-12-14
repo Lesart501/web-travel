@@ -19,19 +19,24 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
 
-Route::get('/', [HomeController::class, 'book'])->name('book');
+Route::get('/home/{tour}', [HomeController::class, 'book'])->name('book');
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('admin');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
+
+Route::get('/orders/{order}', [AdminController::class, 'chStatusForm'])->name('status.change');
+Route::post('/orders', [AdminController::class, 'saveStatus'])->name('status.save');
 // Починить всё
 Route::get('/admin/add', [AdminController::class, 'addTourForm'])->name('tour.add');
 Route::post('/admin', [AdminController::class, 'saveTour'])->name('tour.save');
 
-Route::get('/admin/edit', [AdminController::class, 'editTourForm'])->name('tour.edit');
-Route::post('/admin', [AdminController::class, 'updateTour'])->name('tour.update');
+// Route::get('/admin/edit', [AdminController::class, 'editTourForm'])->name('tour.edit');
+// Route::post('/admin', [AdminController::class, 'updateTour'])->name('tour.update');
 
-Route::get('/admin/delete', [AdminController::class, 'deleteTourForm'])->name('tour.delete');
-Route::post('/admin', [AdminController::class, 'destroyTour'])->name('tour.destroy');
+// Route::get('/admin/delete', [AdminController::class, 'deleteTourForm'])->name('tour.delete');
+// Route::post('/admin', [AdminController::class, 'destroyTour'])->name('tour.destroy');
