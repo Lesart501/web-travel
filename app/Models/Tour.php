@@ -14,4 +14,6 @@ class Tour extends Model
     public function order() {
         return $this->hasMany(Order::class, 'orders_id', 'id');
     }
+
+    protected $fillable = ['name', 'country', 'people', 'nights', 'image', 'operators_id', 'price'];
 }

@@ -14,4 +14,6 @@ class Order extends Model
     public function tour() {
         return $this->belongsTo(Tour::class, 'tours_id', 'id');
     }
+
+    protected $fillable = ['status', 'users_id', 'tours_id', 'out_date', 'return_date'];
 }

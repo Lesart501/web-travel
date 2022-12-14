@@ -19,7 +19,7 @@
                 </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="{{ route('admin') }}" class="nav-link px-2 text-secondary">Редактирование туров</a></li>
-                    <li><a href="{{ route('home') }}" class="nav-link px-2 text-white">Обработка заявок</a></li>
+                    <li><a href="{{ route('orders') }}" class="nav-link px-2 text-white">Обработка заявок</a></li>
                 </ul>
                 <div class="text-end">
                     <form action="{{ route('logout') }}" method="POST" class="form-inline">
