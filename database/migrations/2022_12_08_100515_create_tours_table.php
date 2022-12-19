@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('country');
+            $table->foreignId('countries_id')->constrained('countries','id')->cascadeOnDelete();
             $table->integer('people');
             $table->integer('nights');
-            $table->string('image');
+            $table->string('image')->default('default.jpg');
             $table->foreignId('operators_id')->constrained('operators','id')->cascadeOnDelete();
             $table->integer('price');
             $table->timestamps();

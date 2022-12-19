@@ -11,6 +11,10 @@ class Tour extends Model
         return $this->belongsTo(Operator::class, 'operators_id', 'id');
     }
     
+    public function country() {
+        return $this->belongsTo(Country::class, 'countries_id', 'id');
+    }
+    
     public function order() {
         return $this->hasMany(Order::class, 'orders_id', 'id');
     }
