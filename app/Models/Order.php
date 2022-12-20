@@ -19,5 +19,5 @@ class Order extends Model
         return $this->belongsTo(Tour::class, 'tours_id', 'id');
     }
 
-    protected $fillable = ['status', 'users_id', 'tours_id', 'out_date', 'return_date'];
+    protected $fillable = ['statuses_id', 'users_id', 'tours_id', 'out_date', 'return_date'];
 }

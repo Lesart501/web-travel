@@ -13,9 +13,9 @@
                         @csrf
                         @method('PATCH')
                         <select class="form-select" name="status" aria-label="Default select example">
-                            <option value="В обработке">В обработке</option>
-                            <option value="Принята">Принята</option>
-                            <option value="Отклонена">Отклонена</option>
+                            @foreach($statuses as $status)
+                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                            @endforeach
                         </select>
                         <input type="submit" class="btn btn-primary mt-2" value="Подтвердить">
                     </form>
