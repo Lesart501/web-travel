@@ -12,13 +12,13 @@
             <form action="{{ route('book', ['tour' => $tour->id]) }}" method="post">
                 @csrf
                 <div class="form-group my-4">
-                    <label for="txtTitle">Дата отправления</label>
+                    <label class="fw-bold" for="txtTitle">Дата отправления</label>
                     <input type="date" name="out_date" id="txtTitle" class="form-control mt-2 mb-4">
                 </div>
-                <div class="form-group my-4">
-                    <label for="txtTitle">Дата отправления</label>
-                    <input type="date" name="return_date" id="txtTitle" class="form-control mt-2">
-                </div>
+                <!-- <div class="form-group my-4">
+                    <label for="txtTitle">Дата возвращения</label>
+                    <input type="date" name="return_date" id="txtTitle" class="form-control mt-2" disabled>
+                </div> -->
                 <h4 class="card-text text-primary">{{$tour->price}} р.</h4>
                 <div class="my-4">
                     <input type="submit" value="Забронировать" class="btn btn-primary">

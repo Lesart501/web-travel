@@ -33,7 +33,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="txtTitle">Изображение</label>
-                                <input type="file" name="image" id="image " class="form-control" enctype="multipart/form-data">
+                                <input type="file" name="image" id="image" value="default.jpg" class="form-control" enctype="multipart/form-data">
                             </div>
                             <div class="form-group">
                                 <label for="txtTitle">ID туроператора</label>

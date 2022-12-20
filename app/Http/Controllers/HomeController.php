@@ -39,7 +39,7 @@ class HomeController extends Controller
         $id = Auth::user()->id;
         $out_date = Carbon::parse($request->out_date);
         $return_date = $out_date->addDays($tour->nights);
-        Order::create(['users_id' => $id, 'tours_id' => $tour->id, 'out_date' => $out_date, 'return_date' => $return_date]);
+        Order::create(['statuses_id' => 1, 'users_id' => $id, 'tours_id' => $tour->id, 'out_date' => $out_date, 'return_date' => $return_date]);
         return redirect()->route('home');
     }
 }
