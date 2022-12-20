@@ -26,7 +26,7 @@ class AdminController extends Controller
         $image = $request->file('image');
         $image_name = time()."_". preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
         $tmp = $image->storeAs('uploads', $image_name, 'public');
-        Tour::create(['name' => $request->name, 'country' => $request->country,'people' => $request->people,
+        Tour::create(['name' => $request->name, 'countries_id' => $request->country,'people' => $request->people,
         'nights' => $request->nights,'image' => $image_name,'operators_id' => $request->operators_id,
         'price' => $request->price]);
         return redirect()->route('admin');
@@ -37,12 +37,15 @@ class AdminController extends Controller
         return view('tour_edit', $context);
     }
     public function updateTour(Request $request, Tour $tour) {
-        $this->validate($request, ['image' => ['required', 'mimes:jpeg,gif,bmp,png', 'max:2048']]);
-        $image = $request->file('image');
-        $image_name = time()."_". preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
-        $tmp = $image->storeAs('uploads', $image_name, 'public');
-        $tour->fill(['name' => $request->name, 'country' => $request->country,
-        'people' => $request->people,'nights' => $request->nights,'image' => $image_name,
+        if($request->file('image') != ''){
+            $this->validate($request, ['image' => ['required', 'mimes:jpeg,gif,bmp,png', 'max:2048']]);
+            $image = $request->file('image');
+            $image_name = time()."_". preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
+            $tmp = $image->storeAs('uploads', $image_name, 'public');
+            $tour->fill(['image' => $image_name]);
+        }
+        $tour->fill(['name' => $request->name, 'countries_id' => $request->country,
+        'people' => $request->people,'nights' => $request->nights,
         'operators_id' => $request->operators_id,'price' => $request->price]);
         $tour->save();
         return redirect()->route('admin');
@@ -67,7 +70,7 @@ class AdminController extends Controller
         return view('change_status', $context);
     }
     public function saveStatus(Request $request, Order $order) {
-        $order->fill(['status' => $request->status]);
+        $order->fill(['statuses_id' => $request->status]);
         $order->save();
         return redirect()->route('orders');
     }

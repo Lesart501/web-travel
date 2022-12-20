@@ -44,7 +44,7 @@
                                 <label for="txtTitle">Цена</label>
                                 <input type="number" name="price" id="txtTitle" class="form-control" value="{{$tour->price}}">
                             </div>
-                            <input type="submit" class="btn btn-primary mt-2" value="Подтвердить">
+                            <input type="submit" class="btn btn-warning mt-2" value="Подтвердить">
                         </form>
                     </div>
                 </div>
