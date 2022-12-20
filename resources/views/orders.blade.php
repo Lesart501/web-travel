@@ -23,9 +23,9 @@
                 @foreach($orders as $order)
                     <tr>
                         <th scope="row">{{ $order->created_at }}</th>
-                        <td><a href="{{ route('status.change', ['order' => $order->id]) }}">{{ $order->status }}</a></td>
+                        <td><a href="{{ route('status.change', ['order' => $order->id]) }}">{{ $order->status->name }}</a></td>
                         <td>{{ $order->users_id }}</td>
-                        <td>{{ $order->tour->name }}, {{ $order->tour->country }}</td>
+                        <td>{{ $order->tour->name }}, {{ $order->tour->country->name }}</td>
                         <td>{{ $order->tour->nights }}</td>
                         <td>{{ $order->tour->people }}</td>
                         <td>{{ $order->out_date }}</td>

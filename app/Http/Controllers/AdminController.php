@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Tour;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Order;
+use App\Models\Country;
+use App\Models\Status;
 
 class AdminController extends Controller
 {
@@ -16,7 +18,8 @@ class AdminController extends Controller
     }
 
     public function addTourForm() {
-        return view('tour_add');
+        $context = ['countries' => Country::get()];
+        return view('tour_add', $context);
     }
     public function saveTour(Request $request) {
         $this->validate($request, ['image' => ['required', 'mimes:jpeg,gif,bmp,png', 'max:2048']]);
@@ -30,7 +33,8 @@ class AdminController extends Controller
     }
 
     public function editTourForm(Tour $tour) {
-        return view('tour_edit', ['tour' => $tour]);
+        $context = ['tour' => $tour, 'countries' => Country::get()];
+        return view('tour_edit', $context);
     }
     public function updateTour(Request $request, Tour $tour) {
         $this->validate($request, ['image' => ['required', 'mimes:jpeg,gif,bmp,png', 'max:2048']]);
@@ -59,7 +63,8 @@ class AdminController extends Controller
     }
     
     public function chStatusForm(Order $order) {
-        return view('change_status', ['order' => $order]);
+        $context = ['order' => $order, 'statuses' => Status::get()];
+        return view('change_status', $context);
     }
     public function saveStatus(Request $request, Order $order) {
         $order->fill(['status' => $request->status]);

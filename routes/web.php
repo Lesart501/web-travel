@@ -32,7 +32,7 @@ Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
 
 Route::get('/orders/{order}/change', [AdminController::class, 'chStatusForm'])->name('status.change');
 Route::patch('/orders/{order}', [AdminController::class, 'saveStatus'])->name('status.save');
-// Починить всё
+
 Route::get('/admin/add/form', [AdminController::class, 'addTourForm'])->name('tour.add');
 Route::post('/admin/add', [AdminController::class, 'saveTour'])->name('tour.save');
 

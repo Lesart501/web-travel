@@ -13,7 +13,7 @@
                 <div class="card" style="width: 20rem;">
                     <img class="card-img-top" src="storage/uploads/{{$tour->image}}">
                     <div class="card-body">
-                        <h5 class="card-title">{{$tour->name}}, {{$tour->country}}</h5>
+                        <h5 class="card-title">{{$tour->name}}, {{$tour->country->name}}</h5>
                         <p class="card-text">{{$tour->nights}} ночей, {{$tour->people}} человека</p>
                         <p class="card-text text-primary fs-3">{{$tour->price}} р.</p>
                         <a href="{{ route('tour.edit', ['tour' => $tour->id]) }}" class="btn btn-warning">Редактировать</a>

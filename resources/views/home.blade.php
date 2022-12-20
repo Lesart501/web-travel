@@ -22,8 +22,8 @@
             @foreach($orders as $order)
                 <tr>
                     <th scope="row">{{ $order->created_at }}</th>
-                    <td>{{ $order->status }}</td>
-                    <td>{{ $order->tour->name }}, {{ $order->tour->country }}</td>
+                    <td>{{ $order->status->name }}</td>
+                    <td>{{ $order->tour->name }}, {{ $order->tour->country->name }}</td>
                     <td>{{ $order->tour->nights }}</td>
                     <td>{{ $order->tour->people }}</td>
                     <td>{{ $order->out_date }}</td>

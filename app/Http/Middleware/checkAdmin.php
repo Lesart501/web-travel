@@ -17,7 +17,7 @@ class checkAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->status === 'Admin')
+        if(Auth::user()->type === 'Admin')
             return redirect('admin');
         else
             return $next($request);

@@ -18,7 +18,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="txtTitle">Страна</label>
-                                <input type="text" name="country" id="txtTitle" class="form-control" value="{{$tour->country}}">
+                                <select class="form-select" name="country" aria-label="Default select example">
+                                    @foreach($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="txtTitle">Человек</label>

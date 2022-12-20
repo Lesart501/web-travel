@@ -11,7 +11,7 @@
         <form action="" method="post"></form>
             <!-- <img class="card-img-top" src="{{$tour->image}}"> -->
             <div class="card-body">
-                <h5 class="card-title">{{$tour->name}}, {{$tour->country}}</h5>
+                <h5 class="card-title">{{$tour->name}}, {{$tour->country->name}}</h5>
                 <p class="card-text">{{$tour->nights}} ночей, {{$tour->people}} человека</p>
                 <p class="card-text">{{$tour->price}} р.</p>
                 <p class="card-text">{{$tour->operator->name}}</p>
