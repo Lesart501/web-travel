@@ -21,3 +21,17 @@ html, body{
     gap: 2vh;
     width: 60vw;
 }
+
+.booking-image{
+    width: 50%;
+}
+
+@media screen and (max-width: 750px) {
+    .booking{
+        flex-direction: column;
+    }
+    .booking-image{
+        width: 100vw;
+        margin-bottom: 2vh;
+    }
+}

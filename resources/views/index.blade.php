@@ -14,9 +14,9 @@
     <section class="tours text-center py-5">
         <h3 class="mb-5">Лучшие предложения</h3>
         <div class="container d-flex justify-content-center">
-            <div class="d-grid all_tours">
+            <div class="row row-cols-3 gap-3 d-flex justify-content-center">
                 @foreach($tours as $tour)
-                    <div class="card" style="width: 20rem;">
+                    <div class="card col p-0" style="width: 20rem;">
                         <img class="card-img-top" src="storage/uploads/{{$tour->image}}">
                         <div class="card-body">
                             <h5 class="card-title">{{$tour->name}}, {{$tour->country->name}}</h5>

@@ -28,9 +28,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home', ['orders' => Auth::user()->order()->latest()->get()]);
+        $context = ['orders' => Order::latest()->where('users_id', Auth::user()->id)->get()];
+        return view('home', $context);
     }
-    // Сделать бронь
     
     public function bookForm(Tour $tour) {
         return view('book', ['tour' => $tour]);
