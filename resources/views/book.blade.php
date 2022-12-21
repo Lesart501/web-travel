@@ -13,7 +13,12 @@
                 @csrf
                 <div class="form-group my-4">
                     <label class="fw-bold" for="txtTitle">Дата отправления</label>
-                    <input type="date" name="out_date" id="txtTitle" class="form-control mt-2 mb-4">
+                    <input type="date" name="out_date" id="txtTitle" class="form-control @error('out_date') is-invalid @enderror mt-2 mb-4">
+                    @error('out_date')
+                        <span class="invalid-feedback">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <!-- <div class="form-group my-4">
                     <label for="txtTitle">Дата возвращения</label>

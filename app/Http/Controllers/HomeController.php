@@ -10,6 +10,8 @@ use Carbon\Carbon;
 
 class HomeController extends Controller
 {
+    private const BOOK_VALIDATOR = ['out_date' => 'required|date'];
+    private const ERROR_MESSAGES = ['required' => 'Заполните это поле'];
     /**
      * Create a new controller instance.
      *
@@ -36,10 +38,11 @@ class HomeController extends Controller
         return view('book', ['tour' => $tour]);
     }
     public function book(Request $request, Tour $tour){
+        $validated = $request->validate(self::BOOK_VALIDATOR, self::ERROR_MESSAGES);
         $id = Auth::user()->id;
         $out_date = Carbon::parse($request->out_date);
         $return_date = $out_date->addDays($tour->nights);
-        Order::create(['statuses_id' => 1, 'users_id' => $id, 'tours_id' => $tour->id, 'out_date' => $out_date, 'return_date' => $return_date]);
+        Order::create(['statuses_id' => 1, 'users_id' => $id, 'tours_id' => $tour->id, 'out_date' => $validated['out_date'], 'return_date' => $return_date]);
         return redirect()->route('home');
     }
 }

@@ -12,6 +12,31 @@ use App\Models\Status;
 
 class AdminController extends Controller
 {
+    private const ADD_VALIDATOR = [
+        'name' => 'required|max:255',
+        'country' => 'required|numeric',
+        'people' => 'required|numeric',
+        'nights' => 'required|numeric',
+        'image' => 'mimes:jpeg,bmp,png',
+        'operators_id' => 'required|numeric',
+        'price' => 'required|numeric'
+    ];
+    private const EDIT_VALIDATOR = [
+        'name' => 'required|max:255',
+        'country' => 'required|numeric',
+        'people' => 'required|numeric',
+        'nights' => 'required|numeric',
+        'operators_id' => 'required|numeric',
+        'price' => 'required|numeric'
+    ];
+
+    private const ERROR_MESSAGES = [
+        'required' => 'Заполните это поле',
+        'max' => 'Значение не должно быть длиннее :max символов',
+        'numeric' => 'Введите число',
+        'mimes' => 'Выберите файл формата: jpeg, bmp, png'
+    ];
+
     public function index(){
         $context = ['tours' => Tour::latest()->get()];
         return view('admin', $context);
@@ -22,13 +47,13 @@ class AdminController extends Controller
         return view('tour_add', $context);
     }
     public function saveTour(Request $request) {
-        $this->validate($request, ['image' => ['required', 'mimes:jpeg,gif,bmp,png', 'max:2048']]);
+        $validated = $request->validate(self::ADD_VALIDATOR, self::ERROR_MESSAGES);
         $image = $request->file('image');
         $image_name = time()."_". preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
         $tmp = $image->storeAs('uploads', $image_name, 'public');
-        Tour::create(['name' => $request->name, 'countries_id' => $request->country,'people' => $request->people,
-        'nights' => $request->nights,'image' => $image_name,'operators_id' => $request->operators_id,
-        'price' => $request->price]);
+        Tour::create(['name' => $validated['name'], 'countries_id' => $validated['country'],'people' => $validated['people'],
+        'nights' => $validated['nights'],'image' => $image_name,'operators_id' => $validated['operators_id'],
+        'price' => $validated['price']]);
         return redirect()->route('admin');
     }
 
@@ -44,9 +69,10 @@ class AdminController extends Controller
             $tmp = $image->storeAs('uploads', $image_name, 'public');
             $tour->fill(['image' => $image_name]);
         }
-        $tour->fill(['name' => $request->name, 'countries_id' => $request->country,
-        'people' => $request->people,'nights' => $request->nights,
-        'operators_id' => $request->operators_id,'price' => $request->price]);
+        $validated = $request->validate(self::EDIT_VALIDATOR, self::ERROR_MESSAGES);
+        $tour->fill(['name' => $validated['name'], 'countries_id' => $validated['country'],'people' => $validated['people'],
+        'nights' => $validated['nights'],'operators_id' => $validated['operators_id'],
+        'price' => $validated['price']]);
         $tour->save();
         return redirect()->route('admin');
     }
