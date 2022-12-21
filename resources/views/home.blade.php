@@ -3,7 +3,7 @@
 @section('title', 'Личный кабинет')
 
 @section('content')
-    <div class="container text-center my-5 table-responsive">
+    <div class="container text-center my-5">
         <h2>История ваших путешествий</h2>
         <div class="table-responsive">
             <table class="table table-dark table-hover mt-4">
