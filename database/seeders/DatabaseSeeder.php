@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
     {
         $userNames = ['Артём', 'Олег', 'Сергей', 'Анна', 'Константин', 'Ангелина', 'Владимир'];
         $userEmails = ['lesart@mail.ru', 'oleg@mail.ru', 'sergay@mail.ru', 'ana@mail.ru', 'bone@mail.ru', 'angel@mail.ru', 'vldmr@mail.ru'];
-        $types = ['Admin','User','User','User','User','User','User'];
+        $is_admin = [1, 0, 0, 0, 0, 0, 0];
         $password = Hash::make('users');
         for ($i = 0; $i < count($userNames); $i++){
             User::create([
                 'name' => $userNames[$i],
                 'email' => $userEmails[$i],
-                'type' => $types[$i],
+                'is_admin' => $is_admin[$i],
                 'password' => $password
             ]);
         }
