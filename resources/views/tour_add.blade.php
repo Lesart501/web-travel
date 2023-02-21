@@ -1,4 +1,4 @@
-@extends('layouts.admin_base')
+@extends('layouts.base')
 
 @section('title', 'Добавить тур')
 
@@ -7,8 +7,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Добавить тур</div>
-                    <div class="card-body">
+                    <div class="card-header bg-dark text-white">Добавить тур</div>
+                    <div class="card-body border border-3 border-dark rounded-bottom">
                         <form action="{{ route('tour.save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
@@ -60,10 +60,13 @@
                                     </span>
                                 @enderror
                             </div>
-                            <!-- Сделать select оператора -->
                             <div class="form-group">
                                 <label for="txtTitle">ID туроператора</label>
-                                <input type="number" name="operators_id" id="txtTitle" class="form-control @error('operators_id') is-invalid @enderror">
+                                <select class="form-select @error('operator') is-invalid @enderror" name="operator" aria-label="Default select example">
+                                    @foreach($operators as $operator)
+                                        <option value="{{ $operator->id }}">{{ $operator->name }}</option>
+                                    @endforeach
+                                </select>
                                 @error('operators_id')
                                     <span class="invalid-feedback">
                                         <strong>{{ $message }}</strong>
@@ -79,7 +82,10 @@
                                     </span>
                                 @enderror
                             </div>
-                            <input type="submit" class="btn btn-primary mt-2" value="Добавить">
+                            <div class="mt-2">
+                                <input type="submit" class="btn btn-primary" value="Добавить">
+                                <a href="{{ route('admin') }}" class="btn btn-danger">Назад</a>
+                            </div>
                         </form>
                     </div>
                 </div>

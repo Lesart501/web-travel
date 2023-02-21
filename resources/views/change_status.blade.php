@@ -1,4 +1,4 @@
-@extends('layouts.admin_base')
+@extends('layouts.base')
 
 @section('title', 'Изменить статус заявки')
 
@@ -7,17 +7,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Добавить тур</div>
-                <div class="card-body">
+                <div class="card-header bg-dark text-white">Ответить на заявку</div>
+                <div class="card-body border border-3 border-dark rounded-bottom">
                     <form action="{{ route('status.save', ['order' => $order->id]) }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         @method('PATCH')
                         <select class="form-select" name="status" aria-label="Default select example">
                             @foreach($statuses as $status)
-                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                <option value="{{ $status->id }}">{{ $status->name }}</option>
                             @endforeach
                         </select>
-                        <input type="submit" class="btn btn-primary mt-2" value="Подтвердить">
+                        <div class="mt-2">
+                            <input type="submit" class="btn btn-primary" value="Подтвердить">
+                            <a href="{{ route('orders') }}" class="btn btn-danger">Назад</a>
+                        </div>
                     </form>
                 </div>
             </div>

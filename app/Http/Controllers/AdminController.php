@@ -8,6 +8,7 @@ use App\Models\Tour;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Order;
 use App\Models\Country;
+use App\Models\Operator;
 use App\Models\Status;
 
 class AdminController extends Controller
@@ -18,7 +19,7 @@ class AdminController extends Controller
         'people' => 'required|numeric',
         'nights' => 'required|numeric',
         'image' => 'mimes:jpeg,bmp,png',
-        'operators_id' => 'required|numeric',
+        'operator' => 'required|numeric',
         'price' => 'required|numeric'
     ];
     private const EDIT_VALIDATOR = [
@@ -26,7 +27,7 @@ class AdminController extends Controller
         'country' => 'required|numeric',
         'people' => 'required|numeric',
         'nights' => 'required|numeric',
-        'operators_id' => 'required|numeric',
+        'operator' => 'required|numeric',
         'price' => 'required|numeric'
     ];
 
@@ -43,7 +44,7 @@ class AdminController extends Controller
     }
 
     public function addTourForm() {
-        $context = ['countries' => Country::get()];
+        $context = ['countries' => Country::get(), 'operators' => Operator::get()];
         return view('tour_add', $context);
     }
     public function saveTour(Request $request) {
@@ -52,13 +53,13 @@ class AdminController extends Controller
         $image_name = time()."_". preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
         $tmp = $image->storeAs('uploads', $image_name, 'public');
         Tour::create(['name' => $validated['name'], 'countries_id' => $validated['country'],'people' => $validated['people'],
-        'nights' => $validated['nights'],'image' => $image_name,'operators_id' => $validated['operators_id'],
+        'nights' => $validated['nights'],'image' => $image_name,'operators_id' => $validated['operator'],
         'price' => $validated['price']]);
         return redirect()->route('admin');
     }
 
     public function editTourForm(Tour $tour) {
-        $context = ['tour' => $tour, 'countries' => Country::get()];
+        $context = ['tour' => $tour, 'countries' => Country::get(), 'operators' => Operator::get()];
         return view('tour_edit', $context);
     }
     public function updateTour(Request $request, Tour $tour) {
@@ -71,7 +72,7 @@ class AdminController extends Controller
         }
         $validated = $request->validate(self::EDIT_VALIDATOR, self::ERROR_MESSAGES);
         $tour->fill(['name' => $validated['name'], 'countries_id' => $validated['country'],'people' => $validated['people'],
-        'nights' => $validated['nights'],'operators_id' => $validated['operators_id'],
+        'nights' => $validated['nights'],'operators_id' => $validated['operator'],
         'price' => $validated['price']]);
         $tour->save();
         return redirect()->route('admin');

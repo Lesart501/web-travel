@@ -1,4 +1,4 @@
-@extends('layouts.admin_base')
+@extends('layouts.base')
 
 @section('title', 'Редактировать тур')
 
@@ -7,8 +7,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Редактировать тур</div>
-                    <div class="card-body">
+                    <div class="card-header bg-dark text-white">Редактировать тур</div>
+                    <div class="card-body border border-3 border-dark rounded-bottom">
                         <form action="{{ route('tour.update', ['tour' => $tour->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
@@ -61,11 +61,14 @@
                                     </span>
                                 @enderror
                             </div>
-                            <!-- Сделать select оператора -->
                             <div class="form-group">
-                                <label for="txtTitle">ID туроператора</label>
-                                <input type="number" name="operators_id" id="txtTitle" class="form-control @error('operators_id') is-invalid @enderror" value="{{$tour->operators_id}}">
-                                @error('operators_id')
+                                <label for="txtTitle">Туроператор</label>
+                                <select class="form-select @error('operator') is-invalid @enderror" name="operator" aria-label="Default select example">
+                                    @foreach($operators as $operator)
+                                        <option value="{{ $operator->id }}">{{ $operator->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('operator')
                                     <span class="invalid-feedback">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -80,7 +83,10 @@
                                     </span>
                                 @enderror
                             </div>
-                            <input type="submit" class="btn btn-warning mt-2" value="Подтвердить">
+                            <div class="mt-2">
+                                <input type="submit" class="btn btn-primary" value="Подтвердить">
+                                <a href="{{ route('admin') }}" class="btn btn-danger">Назад</a>
+                            </div>
                         </form>
                     </div>
                 </div>
