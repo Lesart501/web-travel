@@ -21,6 +21,8 @@ Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::get('/filter', [MainController::class, 'filter'])->name('filter');
 
+Route::get('/about', [MainController::class, 'about'])->name('about');
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/home/{tour}/book', [HomeController::class, 'bookForm'])->name('book.form');

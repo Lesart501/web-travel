@@ -26,6 +26,27 @@ html, body{
     width: 50%;
 }
 
+
+.about_pic{
+    background: url(../img/about_pics/office.jpg);
+    background-position: bottom;
+    background-size: cover;
+    width: 100%;
+    height: 70vh;
+    padding-top: 62vh;
+}
+
+.promises_pics{
+    max-width: 50vw;
+}
+
+.documents{
+    background: #e7e7e7;
+}
+.document{
+    max-width: 50vw;
+}
+
 @media screen and (max-width: 750px) {
     .booking{
         flex-direction: column;
@@ -33,5 +54,20 @@ html, body{
     .booking-image{
         width: 100vw;
         margin-bottom: 2vh;
+    }
+
+    
+    .promise{
+        flex-direction: column;
+    }
+    .reverse{
+        flex-direction: column-reverse;
+    }
+    .promises_pics{
+        max-width: 100%;
+    }
+    
+    .document{
+        max-width: 75vw;
     }
 }
