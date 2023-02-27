@@ -6,13 +6,13 @@
 <section class="pic_sec">
     <div class="home_pic">
         <div class="opacity-75 bg-white rounded p-3 pic_text">
-            <h2>Добро пожаловать на сайт Travelling</h2>
-            <p>Лучшие туры по всему миру у нас!</p>
+            <h1>Добро пожаловать на сайт Travelling</h1>
+            <h4 class="mt-3">Лучшие туры по всему миру у нас!</h4>
         </div>
     </div>
 </section>
 
-<section class="slider">
+<section class="slider text-center">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -21,24 +21,24 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="..." class="d-block w-100" alt="...">
+                <img src="storage/uploads/slider/slider_alps.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
+                    <h5>Доломитовые Апьпы</h5>
+                    <p>Италия</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <img src="storage/uploads/slider/slider_beach.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
+                    <h5>Сиамский залив</h5>
+                    <p>Тайланд</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+                <img src="storage/uploads/slider/slider_canyon.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
+                    <h5>Гранд-каньон</h5>
+                    <p>США</p>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
 <section class="tours text-center pb-5">
     <div class="mb-4 py-4 bg-dark">
         <h3 class="text-white mb-4">Выберите подходящий Вам тур</h3>
-        <div class="container d-flex justify-content-center">
+        <div class="container d-flex justify-content-center filter">
             <select class="form-select" id="country" name="country" aria-label="Default select example">
                 @foreach($countries as $country)
                 <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -71,7 +71,7 @@
         <div class="row row-cols-3 gap-3 d-flex justify-content-center" id="tours">
             @foreach($tours as $tour)
             <div class="card col p-0" style="width: 20rem;">
-                <img class="card-img-top" src="storage/uploads/{{$tour->image}}">
+                <img class="card-img-top" src="storage/uploads/tours/{{$tour->image}}">
                 <div class="card-body">
                     <h5 class="card-title">{{$tour->name}}, {{$tour->country->name}}</h5>
                     <p class="card-text">{{$tour->nights}} ночей, {{$tour->people}} человека</p>
