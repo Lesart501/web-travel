@@ -12,7 +12,7 @@
             <div class="row row-cols-3 gap-3 d-flex justify-content-center">
                 @foreach($tours as $tour)
                     <div class="card col p-0" style="width: 20rem;">
-                        <img class="card-img-top" src="storage/uploads/{{$tour->image}}">
+                        <img class="card-img-top" src="storage/uploads/tours/{{$tour->image}}">
                         <div class="card-body">
                             <h5 class="card-title">{{$tour->name}}, {{$tour->country->name}}</h5>
                             <p class="card-text">{{$tour->nights}} ночей, {{$tour->people}} человека</p>

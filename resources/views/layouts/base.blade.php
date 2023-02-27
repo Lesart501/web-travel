@@ -17,16 +17,16 @@
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     @guest
-                        <li><a href="{{ route('index') }}" class="nav-link px-2 text-white fw-bold">Главная</a></li>
+                    <li><a href="{{ route('index') }}" class="nav-link px-2 text-white fw-bold">Главная</a></li>
                     @endguest
                     @auth
-                        @if(!Auth::user()->is_admin)
-                            <li><a href="{{ route('index') }}" class="nav-link px-2 text-white fw-bold">Главная</a></li>
-                            <li><a href="{{ route('home') }}" class="nav-link px-2 text-white">Личный кабинет</a></li>
-                        @elseif(Auth::user()->is_admin)
-                            <li><a href="{{ route('admin') }}" class="nav-link px-2 text-white fw-bold">Редактирование туров</a></li>
-                            <li><a href="{{ route('orders') }}" class="nav-link px-2 text-white">Обработка заявок</a></li>
-                        @endif
+                    @if(!Auth::user()->is_admin)
+                    <li><a href="{{ route('index') }}" class="nav-link px-2 text-white fw-bold">Главная</a></li>
+                    <li><a href="{{ route('home') }}" class="nav-link px-2 text-white">Личный кабинет</a></li>
+                    @elseif(Auth::user()->is_admin)
+                    <li><a href="{{ route('admin') }}" class="nav-link px-2 text-white fw-bold">Редактирование туров</a></li>
+                    <li><a href="{{ route('orders') }}" class="nav-link px-2 text-white">Обработка заявок</a></li>
+                    @endif
                     @endauth
                 </ul>
                 <div class="text-end">
@@ -46,6 +46,52 @@
     </header>
 
     @yield('content')
+
+    <footer class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h5>Телефон</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">+7(914)173-49-79</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">+7(939)682-73-76</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>E-mail</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">travel2sewer@mail.ru</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>Адрес</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">ул. Красных Партизан, 559, Краснодар</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">ул. имени 40-летия Победы, 65, Краснодар</a></li>
+                    </ul>
+                </div>
+                <div class="col offset-1">
+                    <form>
+                        <h5>Subscribe to our newsletter</h5>
+                        <p>Monthly digest of whats new and exciting from us.</p>
+                        <div class="d-flex w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between pt-4 my-4 border-top">
+                <p>© 2023 Travelling. Все права защищены</p>
+                <ul class="list-unstyled d-flex">
+                    <li class="ms-3"><a class="link-dark" href="#"><img src="img/icons/twitter.svg" alt=""></a></li>
+                    <li class="ms-3"><a class="link-dark" href="#"><img src="img/icons/telegram.svg" alt=""></a></li>
+                    <li class="ms-3"><a class="link-dark" href="#"><img src="img/icons/vk.svg" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
     <script src="{{ asset('js/script.js') }}"></script>
 </body>
