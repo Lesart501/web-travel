@@ -38,4 +38,8 @@ class MainController extends Controller
         }
         else abort(403);
     }
+    
+    public function about(){
+        return view('about');
+    }
 }

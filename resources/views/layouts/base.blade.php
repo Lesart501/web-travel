@@ -18,11 +18,13 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     @guest
                     <li><a href="{{ route('index') }}" class="nav-link px-2 text-white fw-bold">Главная</a></li>
+                    <li><a href="{{ route('about') }}" class="nav-link px-2 text-white">О нас</a></li>
                     @endguest
                     @auth
                     @if(!Auth::user()->is_admin)
                     <li><a href="{{ route('index') }}" class="nav-link px-2 text-white fw-bold">Главная</a></li>
                     <li><a href="{{ route('home') }}" class="nav-link px-2 text-white">Личный кабинет</a></li>
+                    <li><a href="{{ route('about') }}" class="nav-link px-2 text-white">О нас</a></li>
                     @elseif(Auth::user()->is_admin)
                     <li><a href="{{ route('admin') }}" class="nav-link px-2 text-white fw-bold">Редактирование туров</a></li>
                     <li><a href="{{ route('orders') }}" class="nav-link px-2 text-white">Обработка заявок</a></li>
