@@ -56,16 +56,17 @@
 <section class="tours text-center pb-5">
     <div class="mb-4 py-4 bg-dark">
         <h3 class="text-white mb-4">Выберите подходящий Вам тур</h3>
-        <div class="container d-flex justify-content-center filter">
+        <form class="container d-flex justify-content-center filter" id="filter_form">
+            @csrf
             <select class="form-select" id="country" name="country" aria-label="Default select example">
                 @foreach($countries as $country)
                 <option value="{{ $country->id }}">{{ $country->name }}</option>
                 @endforeach
             </select>
-            <input class="form-control" id="people" type="number" placeholder="Туристов" value="1">
-            <input class="form-control" id="nights" type="number" placeholder="Ночей" value="6">
-            <input class="form-control bg-primary text-white" id="search" type="button" value="Найти">
-        </div>
+            <input class="form-control" id="people" name="people" type="number" placeholder="Туристов" value="1">
+            <input class="form-control" id="nights" name="nights" type="number" placeholder="Ночей" value="6">
+            <input class="form-control bg-primary text-white" id="search" type="submit" value="Найти">
+        </form>
     </div>
     <div class="container d-flex justify-content-center flex-column">
         <div class="row row-cols-3 gap-3 d-flex justify-content-center" id="tours">

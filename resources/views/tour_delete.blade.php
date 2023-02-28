@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container-xxl d-flex justify-content-evenly my-5 booking">
-        <img class="card-img-top img-fluid booking-image rounded" src="../../storage/uploads/{{$tour->image}}">
+        <img class="card-img-top img-fluid booking-image rounded" src="../../storage/uploads/tours/{{$tour->image}}">
         <div class="ml-3">
             <h5 class="card-title">{{$tour->name}}, {{$tour->country->name}}</h5>
             <p class="card-text my-4"><b>Ночей:</b>    {{$tour->nights}}</p>
