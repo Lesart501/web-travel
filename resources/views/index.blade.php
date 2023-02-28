@@ -56,20 +56,24 @@
 <section class="tours text-center pb-5">
     <div class="mb-4 py-4 bg-dark">
         <h3 class="text-white mb-4">Выберите подходящий Вам тур</h3>
-        <form class="container d-flex justify-content-center filter" id="filter_form">
+        <form class="container d-flex justify-content-center filter text-center" id="filter_form">
             @csrf
+            <label class="fs-5 text-white mx-2 py-1" for="country">Страна</label>
             <select class="form-select" id="country" name="country" aria-label="Default select example">
                 @foreach($countries as $country)
                 <option value="{{ $country->id }}">{{ $country->name }}</option>
                 @endforeach
             </select>
+            <label class="fs-5 text-white mx-2 py-1" for="people">Человек</label>
             <input class="form-control" id="people" name="people" type="number" placeholder="Туристов" value="1">
+            <label class="fs-5 text-white mx-2 py-1" for="nights">Ночей</label>
             <input class="form-control" id="nights" name="nights" type="number" placeholder="Ночей" value="6">
-            <input class="form-control bg-primary text-white" id="search" type="submit" value="Найти">
+            <input class="form-control bg-primary text-white fs-5" id="search" type="submit" value="Найти">
         </form>
     </div>
     <div class="container d-flex justify-content-center flex-column">
         <div class="row row-cols-3 gap-3 d-flex justify-content-center" id="tours">
+            <!-- Сделать middleware для гостя для фильтра -->
             @foreach($tours as $tour)
             <div class="card col p-0" style="width: 20rem;">
                 <img class="card-img-top" src="storage/uploads/tours/{{$tour->image}}">
