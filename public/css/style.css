@@ -3,6 +3,7 @@ html, body{
     padding: 0;
 }
 
+
 .home_pic{
     background: url(../img/main_pics/mainPic6.jpg);
     background-size: cover;
@@ -16,14 +17,24 @@ html, body{
     height: 20vh;
 }
 
+
+#search{
+    margin-left: 2vw;
+}
 .all_tours{
     grid-template-columns: repeat(3, 1fr);
     gap: 2vh;
     width: 60vw;
 }
 
+
 .booking-image{
     width: 50%;
+}
+
+
+.mb_for_normal_footer{
+    margin-bottom: 40vh;
 }
 
 
@@ -47,7 +58,22 @@ html, body{
     max-width: 50vw;
 }
 
+
+
 @media screen and (max-width: 750px) {
+    .pic_text{
+        width: 75vw;
+        height: 23vh;
+    }
+    
+    .filter{
+        flex-wrap: wrap;
+    }
+    #search{
+        margin-top: 3vh;
+    }
+
+
     .booking{
         flex-direction: column;
     }
@@ -56,7 +82,7 @@ html, body{
         margin-bottom: 2vh;
     }
 
-    
+
     .promise{
         flex-direction: column;
     }

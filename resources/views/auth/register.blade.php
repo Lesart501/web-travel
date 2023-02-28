@@ -3,13 +3,13 @@
 @section('title', 'Регистрация')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-5 vh-100">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Регистрация</div>
+                    <div class="card-header text-white bg-dark">Регистрация</div>
 
-                    <div class="card-body">
+                    <div class="card-body border border-3 border-dark rounded-bottom">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
