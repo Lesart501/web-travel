@@ -19,7 +19,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
 
-Route::get('/filter', [MainController::class, 'filter'])->name('filter');
+Route::post('/filter', [MainController::class, 'filter'])->name('filter');
 
 Route::get('/about', [MainController::class, 'about'])->name('about');
 
