@@ -59,6 +59,17 @@ html, body{
 }
 
 
+.lk_intro div{
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.lk_intro img{
+    max-width: 50vw;
+}
+
+
 
 @media screen and (max-width: 750px) {
     .pic_text{
@@ -80,6 +91,19 @@ html, body{
     .booking-image{
         width: 100vw;
         margin-bottom: 2vh;
+    }
+
+
+    .lk_intro{
+        flex-direction: column-reverse;
+    }
+    .lk_intro div{
+        width: 100%;
+        margin-top: -5vh;
+        background-color: white;
+    }
+    .lk_intro img{
+        max-width: 100%;
     }
 
 

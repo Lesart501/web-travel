@@ -72,6 +72,7 @@
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">ул. имени 40-летия Победы, 65, Краснодар</a></li>
                     </ul>
                 </div>
+                <!-- Придумать, что сюда влепить вместо бесполезного англоязычного говна (можно лого, можно адаптировать говно) -->
                 <div class="col offset-1">
                     <form>
                         <h5>Subscribe to our newsletter</h5>
