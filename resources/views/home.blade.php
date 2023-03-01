@@ -3,6 +3,12 @@
 @section('title', 'Личный кабинет')
 
 @section('content')
+<section class="lk_intro d-flex">
+    <div>
+        <h2>Добро пожаловать, {{ Auth::user()->name }}</h2>
+    </div>
+    <img src="img/lk_intro.webp" class="" alt="">
+</section>
 <div class="container text-center my-5">
     <h2>История ваших путешествий</h2>
     <div class="table-responsive">
