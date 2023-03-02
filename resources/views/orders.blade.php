@@ -18,13 +18,14 @@
                         <th scope="col">Дата отправления</th>
                         <th scope="col">Дата возвращения</th>
                         <th scope="col">Цена</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($orders as $order)
                         <tr>
                             <th scope="row">{{ $order->created_at }}</th>
-                            <td><a href="{{ route('status.change', ['order' => $order->id]) }}">{{ $order->status->name }}</a></td>
+                            <td class="text-primary">{{ $order->status->name }}</td>
                             <td>{{ $order->users_id }}</td>
                             <td>{{ $order->tour->name }}, {{ $order->tour->country->name }}</td>
                             <td>{{ $order->tour->nights }}</td>
@@ -32,6 +33,7 @@
                             <td>{{ $order->out_date }}</td>
                             <td>{{ $order->return_date }}</td>
                             <td>{{ $order->tour->price }} р.</td>
+                            <td><a href="{{ route('status.change', ['order' => $order->id]) }}" class="btn btn-primary">Откликнуться</a></td>
                         </tr>
                     @endforeach
                 </tbody>

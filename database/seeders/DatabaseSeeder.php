@@ -25,12 +25,14 @@ class DatabaseSeeder extends Seeder
         $userEmails = ['lesart@mail.ru', 'oleg@mail.ru', 'sergay@mail.ru', 'ana@mail.ru', 'bone@mail.ru', 'angel@mail.ru', 'vldmr@mail.ru'];
         $is_admin = [1, 0, 0, 0, 0, 0, 0];
         $password = Hash::make('users');
+        $phones = ['89442585647', '89650255926', '89236036531', '89033956839', '89243683968', '89123557508', '89346564566'];
         for ($i = 0; $i < count($userNames); $i++){
             User::create([
                 'name' => $userNames[$i],
                 'email' => $userEmails[$i],
                 'is_admin' => $is_admin[$i],
-                'password' => $password
+                'password' => $password,
+                'phone' => $phones[$i]
             ]);
         }
         
