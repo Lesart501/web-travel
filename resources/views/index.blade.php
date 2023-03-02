@@ -93,4 +93,6 @@
         </div>
     </div>
 </section>
+
+<script src="{{ asset('js/filter.js') }}"></script>
 @endsection
