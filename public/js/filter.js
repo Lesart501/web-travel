@@ -1,6 +1,5 @@
 let filter_form = document.getElementById("filter_form");
 let tours = document.getElementById("tours");
-
 filter_form.addEventListener("submit", (e)=>{
     let filter_data = new FormData(filter_form);
     e.preventDefault();

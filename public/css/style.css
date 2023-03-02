@@ -31,6 +31,9 @@ html, body{
 .booking-image{
     width: 50%;
 }
+#nights{
+    border: none;
+}
 
 
 .mb_for_normal_footer{
