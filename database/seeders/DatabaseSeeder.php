@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
                 'phone' => $phones[$i]
             ]);
         }
-        
+
         $operatorNames = ['Great Tour', 'The Traveller', 'Global Travel'];
         $operatorEmails = ['gt1917@mail.ru', 'traveller@mail.ru', 'globaltrt@mail.ru'];
         for ($i = 0; $i < count($operatorNames); $i++){
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
                 'name' => $statusNames[$i]
             ]);
         }
-        
+
         $countryNames = ['Турция', 'Россия', 'Египет', 'Италия', 'Тайланд',
         'Абхазия', 'Франция', 'Италия', 'Непал', 'Китай', 'Индия',
         'Великобритания', 'Германия', 'США', 'Канада', 'Швеция', 'Бразилия',
@@ -79,10 +79,10 @@ class DatabaseSeeder extends Seeder
                 'nights' => $nights[$i],
                 'image' => $images[$i],
                 'operators_id' => $operators_id[$i],
-                'price' => $price[$i]            
+                'price' => $price[$i]
             ]);
         }
-        
+
         $users_id = [2, 3, 4, 5, 6, 7];
         $tours_id = [6, 3, 2, 1, 5, 4];
         $out_date = ['02.03.2023', '05.04.2023', '23.05.2023', '30.04.2023', '14.06.2023', '17.05.2023'];

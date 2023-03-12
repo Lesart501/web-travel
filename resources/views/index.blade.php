@@ -95,4 +95,5 @@
 </section>
 
 <script src="{{ asset('js/filter.js') }}"></script>
+<script src="{{ asset('js/tawkto.js') }}"></script>
 @endsection

@@ -13,13 +13,12 @@ class HomeController extends Controller
 {
     private const BOOK_VALIDATOR = [
         'out_date' => 'required|date|after:today',
-        'return_date' => 'required|date|after:out_date',
+        'return_date' => 'required|date',
         'phone' => 'required'
     ];
     private const ERROR_MESSAGES = [
         'required' => 'Заполните это поле',
-        'after:today' => 'Отправление должно быть не раньше, чем завтра',
-        'after:out_date' => 'Отправление должно быть не раньше, чем завтра',
+        'after:today' => 'Отправление должно быть не раньше, чем завтра'
     ];
     /**
      * Create a new controller instance.
@@ -39,10 +38,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        $context = ['orders' => Order::latest()->where('users_id', Auth::user()->id)->get()];
+        $orders = Order::latest()->where('users_id', Auth::user()->id);
+        $context = [
+            'orders' => $orders->get(),
+            'watched_orders' => $orders->where('statuses_id', 1)->get()
+        ];
         return view('home', $context);
     }
-    
+
     public function bookForm(Tour $tour) {
         return view('book', ['tour' => $tour]);
     }
@@ -52,5 +55,11 @@ class HomeController extends Controller
         DB::table('users')->where('id', '=', Auth::user()->id)->update(['phone' => $validated['phone']]);
         Order::create(['statuses_id' => 1, 'users_id' => $id, 'tours_id' => $tour->id, 'out_date' => $validated['out_date'], 'return_date' => $validated['return_date']]);
         return redirect()->route('home');
+    }
+
+    public function cancelOrder($id){
+        $order = Order::find($id);
+        $order->delete();
+        return response(['success' => 'Order has been cancelled']);
     }
 }
