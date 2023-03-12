@@ -28,22 +28,24 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/{tour}/book', [HomeController::class, 'bookForm'])->name('book.form');
 Route::post('/home/{tour}', [HomeController::class, 'book'])->name('book');
 
+Route::delete('/home/{order}/cancel', [HomeController::class, 'cancelOrder'])->name('order.cancel');
+
 Auth::routes();
 
 Route::middleware(['admin'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
     Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
-    
+
     Route::get('/orders/{order}/change', [AdminController::class, 'chStatusForm'])->name('status.change');
     Route::patch('/orders/{order}', [AdminController::class, 'saveStatus'])->name('status.save');
-    
+
     Route::get('/admin/add/form', [AdminController::class, 'addTourForm'])->name('tour.add');
     Route::post('/admin/add', [AdminController::class, 'saveTour'])->name('tour.save');
-    
+
     Route::get('/admin/{tour}/edit/form', [AdminController::class, 'editTourForm'])->name('tour.edit');
     Route::patch('/admin/{tour}/edit', [AdminController::class, 'updateTour'])->name('tour.update');
-    
+
     Route::get('/admin/{tour}/delete', [AdminController::class, 'deleteTourForm'])->name('tour.delete');
     Route::post('/admin/{tour}', [AdminController::class, 'destroyTour'])->name('tour.destroy');
 });

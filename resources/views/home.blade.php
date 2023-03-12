@@ -23,23 +23,37 @@
                     <th scope="col">Дата отправления</th>
                     <th scope="col">Дата возвращения</th>
                     <th scope="col">Цена</th>
+                    @php($order_num = count($watched_orders))
+                    @if($order_num > 0)
+                    <th scope="col">Отменить</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
                 @foreach($orders as $order)
-                <tr>
+                <tr id="order{{ $order->id }}" class="align-middle">
                     <th scope="row">{{ $order->created_at }}</th>
-                    <td>{{ $order->status->name }}</td>
+                    <td class="text-primary">{{ $order->status->name }}</td>
                     <td>{{ $order->tour->name }}, {{ $order->tour->country->name }}</td>
                     <td>{{ $order->tour->nights }}</td>
                     <td>{{ $order->tour->people }}</td>
                     <td>{{ $order->out_date }}</td>
                     <td>{{ $order->return_date }}</td>
                     <td>{{ $order->tour->price }} р.</td>
+                    @if($order_num > 0)
+                    <td>
+                        @if($order->status->id == 1)
+                        <a onclick="cancelOrder({{ $order->id }})" class="btn btn-danger">Отменить</a>
+                        @endif
+                    </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
+
+<script src="{{ asset('js/cancel_order.js') }}"></script>
+<script src="{{ asset('js/tawkto.js') }}"></script>
 @endsection
