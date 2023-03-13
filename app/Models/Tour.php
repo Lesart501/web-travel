@@ -10,14 +10,14 @@ class Tour extends Model
     public function operator() {
         return $this->belongsTo(Operator::class, 'operators_id', 'id');
     }
-    
+
     public function country() {
         return $this->belongsTo(Country::class, 'countries_id', 'id');
     }
-    
+
     public function order() {
         return $this->hasMany(Order::class, 'orders_id', 'id');
     }
 
-    protected $fillable = ['name', 'countries_id', 'people', 'nights', 'image', 'operators_id', 'price'];
+    protected $fillable = ['name', 'place', 'countries_id', 'people', 'nights', 'image', 'operators_id', 'description', 'price'];
 }

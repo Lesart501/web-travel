@@ -21,7 +21,8 @@ class MainController extends Controller
             $output .= "<div class=\"card col p-0\" style=\"width: 20rem;\">
                 <img class="."card-img-top"." src="."storage/uploads/tours/" . $tour->image .">
                 <div class="."card-body".">
-                    <h5 class="."card-title".">" . $tour->name . ", " . $tour->country->name . "</h5>
+                    <h4 class=\"card-title mb-3\">" . $tour->name . "</h5>
+                    <h5 class="."card-text".">" . $tour->place . ", " . $tour->country->name . "</h5>
                     <p class="."card-text".">" . $tour->nights . " ночей, " . $tour->people . " человека</p>
                     <p class=\"card-text text-primary fs-3\">" . $tour->price . " р.</p>
                     <a href=\"/home/" . $tour->id . "/book\" class=\"btn btn-primary\">Забронировать</a>

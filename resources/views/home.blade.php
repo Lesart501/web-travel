@@ -18,6 +18,7 @@
                     <th scope="col">Дата оформления</th>
                     <th scope="col">Статус</th>
                     <th scope="col">Тур</th>
+                    <th scope="col">Направление</th>
                     <th scope="col">Ночей</th>
                     <th scope="col">Человек</th>
                     <th scope="col">Дата отправления</th>
@@ -34,7 +35,8 @@
                 <tr id="order{{ $order->id }}" class="align-middle">
                     <th scope="row">{{ $order->created_at }}</th>
                     <td class="text-primary">{{ $order->status->name }}</td>
-                    <td>{{ $order->tour->name }}, {{ $order->tour->country->name }}</td>
+                    <td>{{ $order->tour->name }}</td>
+                    <td>{{ $order->tour->place }}, {{ $order->tour->country->name }}</td>
                     <td>{{ $order->tour->nights }}</td>
                     <td>{{ $order->tour->people }}</td>
                     <td>{{ $order->out_date }}</td>

@@ -6,7 +6,8 @@
     <div class="container-xxl d-flex justify-content-evenly my-5 booking">
         <img class="card-img-top img-fluid booking-image rounded" src="../../storage/uploads/tours/{{$tour->image}}">
         <div class="ml-3">
-            <h5 class="card-title">{{$tour->name}}, {{$tour->country->name}}</h5>
+            <h4 class="card-title mb-4">{{$tour->name}}</h5>
+            <h5 class="card-text">{{$tour->place}}, {{$tour->country->name}}</h5>
             <p class="card-text my-4"><b>Ночей:</b>    {{$tour->nights}}</p>
             <p class="card-text"><b>Человек:</b>    {{$tour->people}}</p>
             <p class="card-text"><b>Туроператор:</b>    {{$tour->operator->name}}</p>
@@ -18,6 +19,10 @@
                     <a href="{{ route('admin') }}" class="btn btn-danger">Назад</a>
                 </div>
             </form>
+            <div class="desc">
+                <label class="fw-bold">Описание</label>
+                <p class="card-text mt-2">{{ $tour->description }}</p>
+            </div>
         </div>
     </div>
 @endsection
