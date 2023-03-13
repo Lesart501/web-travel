@@ -34,6 +34,9 @@ html, body{
 #nights{
     border: none;
 }
+.desc{
+    max-width: 30vw;
+}
 
 
 .mb_for_normal_footer{
@@ -79,7 +82,7 @@ html, body{
         width: 75vw;
         height: 23vh;
     }
-    
+
     .filter{
         flex-wrap: wrap;
     }
@@ -94,6 +97,9 @@ html, body{
     .booking-image{
         width: 100vw;
         margin-bottom: 2vh;
+    }
+    .desc{
+        max-width: 100vw;
     }
 
 
@@ -119,7 +125,7 @@ html, body{
     .promises_pics{
         max-width: 100%;
     }
-    
+
     .document{
         max-width: 75vw;
     }

@@ -26,7 +26,8 @@
                     <div class="card">
                         <div class="card-header bg-dark text-white">Заказ</div>
                         <div class="card-body border border-3 border-dark rounded-bottom text-center lh-lg">
-                            <h5 class="card-title my-3">{{$order->tour->name}}, {{$order->tour->country->name}}</h5>
+                            <h4 class="card-title mt-3">{{$order->tour->name}}</h5>
+                            <h5 class="card-text my-4">{{$order->tour->place}}, {{$order->tour->country->name}}</h5>
                             <p class="card-text"><b>Ночей:</b> {{$order->tour->nights}}</p>
                             <p class="card-text"><b>Человек:</b> {{$order->tour->people}}</p>
                             <p class="card-text"><b>Дата отправления:</b> {{$order->out_date}}</p>

@@ -8,7 +8,8 @@
     <div class="ml-3 mt-3">
         <form action="{{ route('book', ['tour' => $tour->id]) }}" method="post">
             @csrf
-            <h5 class="card-title">{{$tour->name}}, {{$tour->country->name}}</h5>
+            <h4 class="card-title mb-4">{{$tour->name}}</h5>
+            <h5 class="card-text">{{$tour->place}}, {{$tour->country->name}}</h5>
             <div class="form-group my-4">
                 <label class="fw-bold" for="txtTitle">Ночей:</label>
                 <input type="number" name="return_date" id="nights" class="bg-white border-none text-dark" value="{{$tour->nights}}" disabled>
@@ -29,7 +30,7 @@
             </div>
             <div class="form-group mb-4">
                 <label class="fw-bold" for="phone-mask">Ваш номер телефона</label>
-                <input type="tel" name="phone" id="phone-mask" class="form-control @error('phone') is-invalid @enderror">
+                <input type="tel" name="phone" id="phone-mask" class="form-control @error('phone') is-invalid @enderror" value="{{ Auth::user()->phone }}">
                 @error('phone')
                     <span class="invalid-feedback">
                         <strong>{{ $message }}</strong>
@@ -42,6 +43,10 @@
                 <a href="{{ route('index') }}" class="btn btn-danger">Назад</a>
             </div>
         </form>
+        <div class="desc">
+            <label class="fw-bold">Описание</label>
+            <p class="card-text mt-2">{{ $tour->description }}</p>
+        </div>
     </div>
 </div>
 
