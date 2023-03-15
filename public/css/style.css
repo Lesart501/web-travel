@@ -17,7 +17,9 @@ html, body{
     height: 20vh;
 }
 
-
+.filters{
+    margin-left: 3vw;
+}
 #search{
     margin-left: 2vw;
 }
