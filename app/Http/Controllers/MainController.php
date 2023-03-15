@@ -13,6 +13,10 @@ class MainController extends Controller
         return view('index', $context);
     }
 
+    public function tours(){
+        $context = ['tours' => Tour::latest()->get(), 'countries' => Country::get()];
+        return view('tours', $context);
+    }
     public function filter(Request $request){
         $tours = Tour::where('countries_id', '=', $request->country)->where('people', '=', $request->people)
             ->where('nights', '=', $request->nights)->orderBy('price', 'asc')->get();

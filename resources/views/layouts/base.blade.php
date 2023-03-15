@@ -18,11 +18,13 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     @guest
                     <li><a href="{{ route('index') }}" class="nav-link px-2 text-white fw-bold">Главная</a></li>
+                    <li><a href="{{ route('tours') }}" class="nav-link px-2 text-white">Туры</a></li>
                     <li><a href="{{ route('about') }}" class="nav-link px-2 text-white">О нас</a></li>
                     @endguest
                     @auth
                     @if(!Auth::user()->is_admin)
                     <li><a href="{{ route('index') }}" class="nav-link px-2 text-white fw-bold">Главная</a></li>
+                    <li><a href="{{ route('tours') }}" class="nav-link px-2 text-white">Туры</a></li>
                     <li><a href="{{ route('home') }}" class="nav-link px-2 text-white">Личный кабинет</a></li>
                     <li><a href="{{ route('about') }}" class="nav-link px-2 text-white">О нас</a></li>
                     @elseif(Auth::user()->is_admin)
@@ -55,27 +57,27 @@
                 <div class="col">
                     <h5>Телефон</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">+7(914)173-49-79</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">+7(939)682-73-76</a></li>
+                        <li class="nav-item mb-2"><a href="tel:+79141734979" class="nav-link p-0 text-muted">+7(914)173-49-79</a></li>
+                        <li class="nav-item mb-2"><a href="tel:+79396827376" class="nav-link p-0 text-muted">+7(939)682-73-76</a></li>
                     </ul>
                 </div>
                 <div class="col">
                     <h5>E-mail</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">travel2sewer@mail.ru</a></li>
+                        <li class="nav-item mb-2"><a href="mailto:travel2sewer@mail.ru" class="nav-link p-0 text-muted">travel2sewer@mail.ru</a></li>
                     </ul>
                 </div>
                 <div class="col">
                     <h5>Адрес</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">ул. Красных Партизан, 559, Краснодар</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">ул. имени 40-летия Победы, 65, Краснодар</a></li>
+                        <li class="nav-item mb-2"><span href="#" class="nav-link p-0 text-muted">ул. Красных Партизан, 559, Краснодар</span></li>
+                        <li class="nav-item mb-2"><span href="#" class="nav-link p-0 text-muted">ул. имени 40-летия Победы, 65, Краснодар</span></li>
                     </ul>
                 </div>
                 <div class="col">
                     <h5>Режим работы</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Пн-Вс — 10:00-22:00</a></li>
+                        <li class="nav-item mb-2"><span href="#" class="nav-link p-0 text-muted">Пн-Вс — 10:00-22:00</span></li>
                     </ul>
                 </div>
             </div>
@@ -89,5 +91,18 @@
             </div>
         </div>
     </footer>
+
+
+    <script>
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/6405de8431ebfa0fe7f0f2ef/1gqreqe28';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
 </body>
 </html>

@@ -70,5 +70,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - Reviews
 - Tables redesign?
 - Admin tour search
-- Separate tours page
-- Ajax tour deletion?
+- Separate tours page (fucking filters)

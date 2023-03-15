@@ -57,5 +57,4 @@
 </div>
 
 <script src="{{ asset('js/cancel_order.js') }}"></script>
-<script src="{{ asset('js/tawkto.js') }}"></script>
 @endsection
