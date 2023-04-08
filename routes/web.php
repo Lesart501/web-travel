@@ -20,6 +20,7 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::get('/tours', [MainController::class, 'tours'])->name('tours');
+Route::get('/tourSearch', [MainController::class, 'tourSearch'])->name('tour.search');
 Route::post('/filter', [MainController::class, 'filter'])->name('filter');
 
 Route::get('/about', [MainController::class, 'about'])->name('about');

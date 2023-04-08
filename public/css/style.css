@@ -19,6 +19,12 @@ html, body{
 
 .filters{
     margin-left: 3vw;
+    width: 25vw;
+}
+.tours{
+    display: flex;
+    justify-content: center;
+    align-items: start;
 }
 #search{
     margin-left: 2vw;

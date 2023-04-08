@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tour;
 use App\Models\Country;
+use App\Models\Operator;
 
 class MainController extends Controller
 {
@@ -14,7 +15,17 @@ class MainController extends Controller
     }
 
     public function tours(){
-        $context = ['tours' => Tour::latest()->get(), 'countries' => Country::get()];
+        $context = ['tours' => Tour::latest()->get(), 'countries' => Country::get(), 'operators' => Operator::get()];
+        return view('tours', $context);
+    }
+    public function tourSearch(Request $request){
+        // Когда отзывы будут, сортировать будем по ним
+        $context = [
+            'tours' => Tour::where('countries_id', '=', $request->country)->where('people', '=', $request->people)
+            ->where('nights', '=', $request->nights)->orderBy('price', 'asc')->get(),
+            'countries' => Country::get(),
+            'operators' => Operator::get()
+        ];
         return view('tours', $context);
     }
     public function filter(Request $request){

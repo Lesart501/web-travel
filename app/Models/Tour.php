@@ -19,5 +19,20 @@ class Tour extends Model
         return $this->hasMany(Order::class, 'orders_id', 'id');
     }
 
-    protected $fillable = ['name', 'place', 'countries_id', 'people', 'nights', 'image', 'operators_id', 'description', 'price'];
+    public function accomodation() {
+        return $this->belongsTo(Accomodation::class, 'accomodations_id', 'id');
+    }
+
+    public function meal() {
+        return $this->belongsTo(Meal::class, 'meals_id', 'id');
+    }
+
+    public function restType() {
+        return $this->belongsTo(RestType::class, 'restTypes_id', 'id');
+    }
+
+    protected $fillable = [
+        'name', 'place', 'countries_id', 'people', 'nights', 'image', 'operators_id', 'accomodations_id', 'meals_id', 'restTypes_id',
+        'description', 'price'
+    ];
 }
