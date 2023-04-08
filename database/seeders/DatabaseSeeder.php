@@ -3,12 +3,16 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Accomodation;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Operator;
 use App\Models\Country;
+use App\Models\Meal;
 use App\Models\Status;
 use App\Models\Order;
+use App\Models\RestType;
 use App\Models\Tour;
 use Illuminate\Support\Facades\Hash;
 
@@ -64,16 +68,44 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        $restTypes = ['Пляжный', 'Городской', 'Природный'];
+        $restDescs = [
+            'Для любителей размеренного отдыха на пляже', 'Посещение достопримечательностей и экскурсии','Для любителей природных красот'
+        ];
+        for ($i = 0; $i < count($restTypes); $i++){
+            RestType::create([
+                'name' => $restTypes[$i],
+                'description' => $restDescs[$i]
+            ]);
+        }
+
+        $accomodations = ['Отель', 'Хостел', 'Вилла', 'Бунгало', 'Гостевой дом'];
+        for ($i = 0; $i < count($accomodations); $i++){
+            Accomodation::create([
+                'name' => $accomodations[$i]
+            ]);
+        }
+
+        $meals = ['Всё включено', 'Завтрак, обед и ужин', 'Завтрак и обед', 'Завтрак', 'Нет'];
+        for ($i = 0; $i < count($meals); $i++){
+            Meal::create([
+                'name' => $meals[$i]
+            ]);
+        }
+
         $tourNames = [
             'Отель Joker Side Hill Suite Hotel', 'Песочная Бухта', 'Отель Charmillion Sea Life Resort', 'Аквамарин', 'Selva Grande мини-отель',
             'Отель Fortuna Bangkok'
         ];
         $places = ['Сиде', 'Севастополь', 'Шарм-Эль-Шейх', 'Адлер', 'Рим', 'Бангкок'];
-        $countries = [1, 2, 3, 4, 5, 6];
+        $countries = [1, 2, 3, 2, 4, 5];
         $people = [2, 1, 1, 2, 2, 1];
         $nights = [6, 6, 4, 6, 14, 13];
         $images = ['side2.jpeg', 'crimea_is_our2.jpg', 'shesh1.jpg', 'adler1.jpg', 'rome1.jpg', 'bangkok.jpg'];
         $operators_id = [1, 2, 3, 3, 2, 1];
+        $rest_types_id = [1, 1, 1, 1, 2, 2];
+        $accomodations_id = [1, 2, 1, 1, 1, 1];
+        $meals_id = [1, 2, 3, 4, 5, 1];
         $descriptions = [
             'Крупный трехзвездочный отель расположен в 15 минутах ходьбы от исторического центра Сиде. На приотельной территории оборудован мини-аквапарк и разбит небольшой сад. Рядом находится множество магазинов, кафе, пекарен, до пляжа можно дойти за 7 минут. Дружелюбный персонал организует бесплатный трансфер на пляж. Здесь любят отдыхать люди в возрасте и семейные пары с детьми.
             Гостям предлагаются апартаменты площадью 33-35 кв. м с видом на сад или море, рассчитанные на 4 человек. В номерах предусмотрены кухня, гостиная, балкон и ванная комната, есть кондиционер, сейф, холодильник и кофеварка. Туристы отмечают удачное расположение и отличный вид на море.',
@@ -95,6 +127,9 @@ class DatabaseSeeder extends Seeder
                 'nights' => $nights[$i],
                 'image' => $images[$i],
                 'operators_id' => $operators_id[$i],
+                'rest_types_id' => $rest_types_id[$i],
+                'accomodations_id' => $accomodations_id[$i],
+                'meals_id' => $meals_id[$i],
                 'description' => $descriptions[$i],
                 'price' => $price[$i]
             ]);

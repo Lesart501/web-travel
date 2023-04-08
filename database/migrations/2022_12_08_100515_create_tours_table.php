@@ -22,6 +22,9 @@ return new class extends Migration
             $table->integer('nights');
             $table->string('image')->default('default.jpg');
             $table->foreignId('operators_id')->constrained('operators','id')->cascadeOnDelete();
+            $table->foreignId('rest_types_id')->constrained('rest_types','id')->cascadeOnDelete();
+            $table->foreignId('accomodations_id')->constrained('accomodations','id')->cascadeOnDelete();
+            $table->foreignId('meals_id')->constrained('meals','id')->cascadeOnDelete();
             $table->text('description');
             $table->integer('price');
             $table->timestamps();
