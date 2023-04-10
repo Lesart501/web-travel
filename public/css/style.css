@@ -99,6 +99,18 @@ html, body{
     }
 
 
+    .filters{
+        width: 90vw;
+        margin-left: 0;
+        margin-bottom: 3vh;
+    }
+    .tours{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
     .booking{
         flex-direction: column;
     }

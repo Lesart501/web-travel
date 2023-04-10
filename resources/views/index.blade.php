@@ -12,7 +12,7 @@
     </div>
 </section>
 
-<section class="slider text-center p-5">
+<section class="slider text-center">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -53,11 +53,10 @@
     </div>
 </section>
 
-<section class="tours text-center pb-5">
+<section class="text-center pb-5">
     <div class="mb-4 py-4 bg-dark">
         <h3 class="text-white mb-4">Выберите подходящий Вам тур</h3>
-        <form class="container d-flex justify-content-center filter text-center" id="filter_form">
-            @csrf
+        <form class="container d-flex justify-content-center filter text-center" action="{{ route('tour.search') }}" method="GET" id="filter_form">
             <label class="fs-5 text-white mx-2 py-1" for="country">Страна</label>
             <select class="form-select" id="country" name="country" aria-label="Default select example">
                 @foreach($countries as $country)
@@ -73,27 +72,19 @@
     </div>
     <div class="container d-flex justify-content-center flex-column">
         <div class="row row-cols-3 gap-3 d-flex justify-content-center" id="tours">
-            <!-- Сделать middleware для гостя для фильтра -->
             @foreach($tours as $tour)
             <div class="card col p-0" style="width: 20rem;">
                 <img class="card-img-top" src="storage/uploads/tours/{{$tour->image}}">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">{{$tour->name}}</h5>
+                    <h4 class="card-title mb-3">{{$tour->name}}</h4>
                     <h5 class="card-text">{{$tour->place}}, {{$tour->country->name}}</h5>
                     <p class="card-text">{{$tour->nights}} ночей, {{$tour->people}} человека</p>
                     <p class="card-text text-primary fs-3">{{$tour->price}} р.</p>
-                    @guest
-                    <a href="{{ route('login') }}" class="btn btn-primary">Забронировать</a>
-                    @endguest
-                    @auth
                     <a href="{{ route('book.form', ['tour' => $tour->id]) }}" class="btn btn-primary">Забронировать</a>
-                    @endauth
                 </div>
             </div>
             @endforeach
         </div>
     </div>
 </section>
-
-<script src="{{ asset('js/filter.js') }}"></script>
 @endsection
