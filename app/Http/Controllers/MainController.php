@@ -36,24 +36,6 @@ class MainController extends Controller
         ];
         return view('tours', $context);
     }
-    // public function filter(Request $request){
-    //     $tours = Tour::where('countries_id', '=', $request->country)->where('people', '=', $request->people)
-    //         ->where('nights', '=', $request->nights)->orderBy('price', 'asc')->get();
-    //     $output = '';
-    //     foreach($tours as $tour){
-    //         $output .= "<div class=\"card col p-0\" style=\"width: 20rem;\">
-    //             <img class="."card-img-top"." src="."storage/uploads/tours/" . $tour->image .">
-    //             <div class="."card-body".">
-    //                 <h4 class=\"card-title mb-3\">" . $tour->name . "</h5>
-    //                 <h5 class="."card-text".">" . $tour->place . ", " . $tour->country->name . "</h5>
-    //                 <p class="."card-text".">" . $tour->nights . " ночей, " . $tour->people . " человека</p>
-    //                 <p class=\"card-text text-primary fs-3\">" . $tour->price . " р.</p>
-    //                 <a href=\"/home/" . $tour->id . "/book\" class=\"btn btn-primary\">Забронировать</a>
-    //             </div>
-    //         </div>";
-    //     }
-    //     return response($output);
-    // }
     // Фильтр не учитывает верхнего поиска по странам и т.д. Эту хуйню надо будет исправить... когда-нибудь
     public function filter(Request $request){
         if($request->restType != 0 && $request->accomodation != 0 && $request->meal != 0 && $request->oper != 0){

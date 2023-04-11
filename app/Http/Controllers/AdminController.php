@@ -46,6 +46,27 @@ class AdminController extends Controller
         $context = ['tours' => Tour::latest()->get()];
         return view('admin', $context);
     }
+    public function search(Request $request){
+        $tours = Tour::where('name', 'Like', '%'.$request->search.'%')->orWhere('place', 'Like', '%'.$request->search.'%')
+            ->orWhereIn('countries_id', Country::select('id')->where('name', 'Like', '%'.$request->search.'%')->get())->get();
+        $output = '';
+        foreach($tours as $tour){
+            $output .= "<div class=\"card col p-0\" style=\"width: 20rem;\">
+                <img class="."card-img-top"." src="."storage/uploads/tours/" . $tour->image .">
+                <div class="."card-body".">
+                    <h4 class=\"card-title mb-3\">" . $tour->name . "</h5>
+                    <h5 class="."card-text".">" . $tour->place . ", " . $tour->country->name . "</h5>
+                    <p class="."card-text".">" . $tour->nights . " ночей, " . $tour->people . " человека</p>
+                    <p class=\"card-text text-secondary\">" . "От " . $tour->operator->name . "</p>
+                    <p class=\"card-text text-primary fs-3\">" . $tour->price . " р.</p>
+                    <a href=\"/admin/" . $tour->id . "/edit/form\" class=\"btn btn-warning\">Редактировать</a>
+                    <a href=\"/admin/" . $tour->id . "/delete\" class=\"btn btn-danger\">Удалить</a>
+                </div>
+            </div>";
+        }
+        return response($output);
+    }
+
 
     public function addTourForm() {
         $context = ['countries' => Country::get(), 'operators' => Operator::get()];

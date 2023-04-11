@@ -3,13 +3,14 @@
 @section('title', 'Редактирование туров')
 
 @section('content')
-    <div class="container">
-        <a href="{{ route('tour.add') }}" class="btn btn-primary m-5">+ Добавить тур</a>
+    <div class="d-flex justify-content-start m-5 add_and_search">
+        <a href="{{ route('tour.add') }}" class="btn btn-primary">+ Добавить тур</a>
+        <input type="search" name="search" id="admin_search" class="form-control" placeholder="Поиск">
     </div>
 
     <section class="tours text-center mb-5">
         <div class="container d-flex justify-content-center">
-            <div class="row row-cols-3 gap-3 d-flex justify-content-center">
+            <div class="row row-cols-3 gap-3 d-flex justify-content-center" id="tours">
                 @foreach($tours as $tour)
                     <div class="card col p-0" style="width: 20rem;">
                         <img class="card-img-top" src="storage/uploads/tours/{{$tour->image}}">
@@ -27,4 +28,7 @@
             </div>
         </div>
     </section>
+
+
+    <script src="js/search.js"></script>
 @endsection

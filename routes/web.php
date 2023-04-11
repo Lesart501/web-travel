@@ -36,6 +36,7 @@ Auth::routes();
 
 Route::middleware(['admin'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/search', [AdminController::class, 'search'])->name('search');
 
     Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
 

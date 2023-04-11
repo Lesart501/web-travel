@@ -17,6 +17,7 @@ html, body{
     height: 20vh;
 }
 
+
 .filters{
     margin-left: 3vw;
     width: 25vw;
@@ -83,6 +84,11 @@ html, body{
     max-width: 50vw;
 }
 
+#admin_search{
+    max-width: 15vw;
+    margin-left: 1vw;
+}
+
 
 
 @media screen and (max-width: 750px) {
@@ -91,11 +97,14 @@ html, body{
         height: 23vh;
     }
 
-    .filter{
-        flex-wrap: wrap;
+    #filter_form{
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
     }
     #search{
         margin-top: 3vh;
+        margin-left: 0;
     }
 
 
@@ -148,5 +157,17 @@ html, body{
 
     .document{
         max-width: 75vw;
+    }
+
+
+    .add_and_search{
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-bottom: 2vh !important;
+    }
+    #admin_search{
+        max-width: 70vw;
+        margin-bottom: 2vh;
+        margin-left: 0;
     }
 }

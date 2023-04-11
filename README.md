@@ -68,6 +68,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## To do
 
 - Reviews
-- Admin tour search
 - Improve(repair) filter
 - Improve personal account
+- Improve search form inputs
