@@ -56,7 +56,7 @@
 <section class="text-center pb-5">
     <div class="mb-4 py-4 bg-dark">
         <h3 class="text-white mb-4">Выберите подходящий Вам тур</h3>
-        <form class="container d-flex justify-content-center filter text-center" action="{{ route('tour.search') }}" method="GET" id="filter_form">
+        <form class="container d-flex justify-content-center text-center" action="{{ route('tour.search') }}" method="GET" id="filter_form">
             <label class="fs-5 text-white mx-2 py-1" for="country">Страна</label>
             <select class="form-select" id="country" name="country" aria-label="Default select example">
                 @foreach($countries as $country)

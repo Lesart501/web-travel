@@ -35,7 +35,7 @@
                             <td>{{ $order->out_date }}</td>
                             <td>{{ $order->return_date }}</td>
                             <td>{{ $order->tour->price }} р.</td>
-                            <td><a href="{{ route('status.change', ['order' => $order->id]) }}" class="btn btn-primary">Откликнуться</a></td>
+                            <td><a href="{{ route('status.change', ['order' => $order->id]) }}" class="btn btn-primary">Редактировать</a></td>
                         </tr>
                     @endforeach
                 </tbody>
