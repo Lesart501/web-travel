@@ -25,7 +25,6 @@ class MainController extends Controller
         return view('tours', $context);
     }
     public function tourSearch(Request $request){
-        // Когда отзывы будут, сортировать будем по ним
         global $searchRequest;
         $searchRequest = $request;
         $context = [
@@ -36,7 +35,6 @@ class MainController extends Controller
         ];
         return view('tours', $context);
     }
-    // Фильтр не учитывает верхнего поиска по странам и т.д. Эту хуйню надо будет исправить... когда-нибудь
     public function filter(Request $request){
         if($request->restType != 0 && $request->accomodation != 0 && $request->meal != 0 && $request->oper != 0){
             $tours = Tour::where('rest_types_id', '=', $request->restType)->where('accomodations_id', '=', $request->accomodation)

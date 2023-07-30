@@ -93,6 +93,8 @@
     </footer>
 
 
+
+    @guest
     <script>
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
@@ -104,5 +106,21 @@
             s0.parentNode.insertBefore(s1,s0);
         })();
     </script>
+    @endguest
+    @auth
+    @if(!Auth::user()->is_admin)
+    <script>
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/6405de8431ebfa0fe7f0f2ef/1gqreqe28';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    @endif
+    @endauth
 </body>
 </html>
