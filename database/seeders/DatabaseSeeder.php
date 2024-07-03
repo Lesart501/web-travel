@@ -20,10 +20,8 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $userNames = ['Артём', 'Олег', 'Сергей', 'Анна', 'Константин', 'Ангелина', 'Владимир'];
         $userEmails = ['lesart@mail.ru', 'oleg@mail.ru', 'sergay@mail.ru', 'ana@mail.ru', 'bone@mail.ru', 'angel@mail.ru', 'vldmr@mail.ru'];
@@ -137,8 +135,22 @@ class DatabaseSeeder extends Seeder
 
         $users_id = [2, 3, 4, 5, 6, 7];
         $tours_id = [6, 3, 2, 1, 5, 4];
-        $out_date = ['02.03.2023', '05.04.2023', '23.05.2023', '30.04.2023', '14.06.2023', '17.05.2023'];
-        $return_date = ['14.03.2023', '11.04.2023', '30.05.2023', '05.05.2023', '22.06.2023', '29.05.2023'];
+        $out_date = [
+            '2023-02-03',
+            '2023-04-05',
+            '2023-05-23',
+            '2023-04-30',
+            '2023-06-14',
+            '2023-05-17',
+        ];
+        $return_date = [
+            '2023-03-14',
+            '2023-04-11',
+            '2023-05-30',
+            '2023-05-05',
+            '2023-06-22',
+            '2023-05-29',
+        ];
         for ($i = 0; $i < count($users_id); $i++){
             Order::create([
                 'statuses_id' => 1,
