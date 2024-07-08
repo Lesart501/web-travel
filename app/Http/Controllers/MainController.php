@@ -14,6 +14,7 @@ class MainController extends Controller
 {
     public function index(){
         $context = ['tours' => Tour::latest()->get(), 'countries' => Country::get()];
+
         return view('index', $context);
     }
 
@@ -22,6 +23,7 @@ class MainController extends Controller
             'tours' => Tour::latest()->get(), 'countries' => Country::get(), 'operators' => Operator::get(),'restTypes' => RestType::get(),
             'accomodations' => Accomodation::get(), 'meals' => Meal::get()
         ];
+
         return view('tours', $context);
     }
     public function tourSearch(Request $request){
@@ -33,8 +35,10 @@ class MainController extends Controller
             'countries' => Country::get(), 'operators' => Operator::get(),'restTypes' => RestType::get(),
             'accomodations' => Accomodation::get(), 'meals' => Meal::get()
         ];
+
         return view('tours', $context);
     }
+
     public function filter(Request $request){
         if($request->restType != 0 && $request->accomodation != 0 && $request->meal != 0 && $request->oper != 0){
             $tours = Tour::where('rest_types_id', '=', $request->restType)->where('accomodations_id', '=', $request->accomodation)
@@ -119,6 +123,7 @@ class MainController extends Controller
                 </div>
             </div>";
         }
+
         return response($output);
     }
 
