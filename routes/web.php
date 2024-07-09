@@ -34,7 +34,7 @@ Route::delete('/home/{order}/cancel', [HomeController::class, 'cancelOrder'])->n
 
 Auth::routes();
 
-Route::middleware(['admin'])->group(function(){
+Route::middleware(['admin'])->group(function() {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/search', [AdminController::class, 'search'])->name('search');
 
