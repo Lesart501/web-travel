@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Tour;
 use App\Models\Order;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 
 class HomeController extends Controller
 {
@@ -44,11 +46,13 @@ class HomeController extends Controller
         return view('home', $context);
     }
 
-    public function bookForm(Tour $tour) {
+    public function bookForm(Tour $tour): Renderable
+    {
         return view('book', ['tour' => $tour]);
     }
 
-    public function book(Request $request, Tour $tour){
+    public function book(Request $request, Tour $tour): RedirectResponse
+    {
         $validated = $request->validate(self::BOOK_VALIDATOR, self::ERROR_MESSAGES);
         $id = Auth::user()->id;
         DB::table('users')->where('id', '=', Auth::user()->id)->update(['phone' => $validated['phone']]);
@@ -63,7 +67,8 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
-    public function cancelOrder($id){
+    public function cancelOrder(int $id): Response
+    {
         $order = Order::find($id);
         $order->delete();
 

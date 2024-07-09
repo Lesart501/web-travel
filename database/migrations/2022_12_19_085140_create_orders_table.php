@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('statuses_id')->constrained('statuses','id')->cascadeOnDelete();
+            $table->foreignId('statuses_id')->constrained('statuses','id')->nullOnDelete();
             $table->foreignId('users_id')->constrained('users','id')->cascadeOnDelete();
-            $table->foreignId('tours_id')->constrained('tours','id')->cascadeOnDelete();
+            $table->foreignId('tours_id')->constrained('tours','id')->restrictOnDelete();
             $table->date('out_date');
             $table->date('return_date');
             $table->timestamps();

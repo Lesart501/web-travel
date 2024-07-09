@@ -28,29 +28,29 @@ class DatabaseSeeder extends Seeder
         $is_admin = [1, 0, 0, 0, 0, 0, 0];
         $password = Hash::make('users');
         $phones = ['89442585647', '89650255926', '89236036531', '89033956839', '89243683968', '89123557508', '89346564566'];
-        for ($i = 0; $i < count($userNames); $i++){
+        for ($i = 0; $i < count($userNames); $i++) {
             User::create([
                 'name' => $userNames[$i],
                 'email' => $userEmails[$i],
                 'is_admin' => $is_admin[$i],
                 'password' => $password,
-                'phone' => $phones[$i]
+                'phone' => $phones[$i],
             ]);
         }
 
         $operatorNames = ['Great Tour', 'The Traveller', 'Global Travel'];
         $operatorEmails = ['gt1917@mail.ru', 'traveller@mail.ru', 'globaltrt@mail.ru'];
-        for ($i = 0; $i < count($operatorNames); $i++){
+        for ($i = 0; $i < count($operatorNames); $i++) {
             Operator::create([
                 'name' => $operatorNames[$i],
-                'email' => $operatorEmails[$i]
+                'email' => $operatorEmails[$i],
             ]);
         }
 
         $statusNames = ['В обработке', 'Принята', 'Отклонена'];
-        for ($i = 0; $i < count($statusNames); $i++){
+        for ($i = 0; $i < count($statusNames); $i++) {
             Status::create([
-                'name' => $statusNames[$i]
+                'name' => $statusNames[$i],
             ]);
         }
 
@@ -60,40 +60,45 @@ class DatabaseSeeder extends Seeder
         'Швейцария', 'Норвегия', 'Австралия', 'Новая Зеландия', 'ОАЭ', 'Южная Корея',
         'Япония', 'Казахстан', 'Израиль', 'Нидерланды', 'Мексика', 'Бразилия',
         'Испания', 'Португалия', 'Чили', 'Гондурас', 'Польша', 'Аргентина'];
-        for ($i = 0; $i < count($countryNames); $i++){
+        for ($i = 0; $i < count($countryNames); $i++) {
             Country::create([
-                'name' => $countryNames[$i]
+                'name' => $countryNames[$i],
             ]);
         }
 
         $restTypes = ['Пляжный', 'Городской', 'Природный'];
         $restDescs = [
-            'Для любителей размеренного отдыха на пляже', 'Посещение достопримечательностей и экскурсии','Для любителей природных красот'
+            'Для любителей размеренного отдыха на пляже',
+            'Посещение достопримечательностей и экскурсии',
+            'Для любителей природных красот'
         ];
-        for ($i = 0; $i < count($restTypes); $i++){
+        for ($i = 0; $i < count($restTypes); $i++) {
             RestType::create([
                 'name' => $restTypes[$i],
-                'description' => $restDescs[$i]
+                'description' => $restDescs[$i],
             ]);
         }
 
         $accomodations = ['Отель', 'Хостел', 'Вилла', 'Бунгало', 'Гостевой дом'];
-        for ($i = 0; $i < count($accomodations); $i++){
+        for ($i = 0; $i < count($accomodations); $i++) {
             Accomodation::create([
-                'name' => $accomodations[$i]
+                'name' => $accomodations[$i],
             ]);
         }
 
         $meals = ['Всё включено', 'Завтрак, обед и ужин', 'Завтрак и обед', 'Завтрак', 'Нет'];
-        for ($i = 0; $i < count($meals); $i++){
+        for ($i = 0; $i < count($meals); $i++) {
             Meal::create([
-                'name' => $meals[$i]
+                'name' => $meals[$i],
             ]);
         }
 
         $tourNames = [
-            'Отель Joker Side Hill Suite Hotel', 'Песочная Бухта', 'Отель Charmillion Sea Life Resort', 'Аквамарин', 'Selva Grande мини-отель',
-            'Отель Fortuna Bangkok'
+            'Отель Joker Side Hill Suite Hotel',
+            'Песочная Бухта',
+            'Отель Charmillion Sea Life Resort',
+            'Аквамарин', 'Selva Grande мини-отель',
+            'Отель Fortuna Bangkok',
         ];
         $places = ['Сиде', 'Севастополь', 'Шарм-Эль-Шейх', 'Адлер', 'Рим', 'Бангкок'];
         $countries = [1, 2, 3, 2, 4, 5];
@@ -116,7 +121,7 @@ class DatabaseSeeder extends Seeder
             Туры в отели по системе «Фортуна» выбирают те, кому важен не бренд отеля, а курорт и возможность сэкономить.'
         ];
         $price = [21306, 17352, 42936, 19889, 67786, 49026];
-        for ($i = 0; $i <  count($tourNames); $i++){
+        for ($i = 0; $i <  count($tourNames); $i++) {
             Tour::create([
                 'name' => $tourNames[$i],
                 'place' => $places[$i],
@@ -129,7 +134,7 @@ class DatabaseSeeder extends Seeder
                 'accomodations_id' => $accomodations_id[$i],
                 'meals_id' => $meals_id[$i],
                 'description' => $descriptions[$i],
-                'price' => $price[$i]
+                'price' => $price[$i],
             ]);
         }
 
@@ -151,13 +156,13 @@ class DatabaseSeeder extends Seeder
             '2023-06-22',
             '2023-05-29',
         ];
-        for ($i = 0; $i < count($users_id); $i++){
+        for ($i = 0; $i < count($users_id); $i++) {
             Order::create([
                 'statuses_id' => 1,
                 'users_id' => $users_id[$i],
                 'tours_id' => $tours_id[$i],
                 'out_date' => $out_date[$i],
-                'return_date'=> $return_date[$i]
+                'return_date'=> $return_date[$i],
             ]);
         }
     }
