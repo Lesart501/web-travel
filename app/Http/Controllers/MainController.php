@@ -23,18 +23,18 @@ class MainController extends Controller
 
     public function tours(): Renderable
     {
-        $context = [
-            'tours' => Tour::latest()->get(), 'countries' => Country::get(), 'operators' => Operator::get(), 'restTypes' => RestType::get(),
-            'accomodations' => Accomodation::get(), 'meals' => Meal::get()
-        ];
-
-        return view('tours', $context);
+        return view('tours', [
+            'tours' => Tour::latest()->get(),
+            'countries' => Country::get(),
+            'operators' => Operator::get(),
+            'restTypes' => RestType::get(),
+            'accomodations' => Accomodation::get(),
+            'meals' => Meal::get(),
+        ]);
     }
 
     public function tourSearch(Request $request): Renderable
     {
-        global $searchRequest;
-        $searchRequest = $request;
         $context = [
             'tours' => Tour::where('countries_id', '=', $request->country)->where('people', '=', $request->people)
                 ->where('nights', '=', $request->nights)->orderBy('price', 'asc')->get(),

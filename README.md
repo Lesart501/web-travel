@@ -8,7 +8,7 @@ Travel agency web app
 
    ```shell
    git clone https://github.com/Lesart501/web-travel.git --config core.autocrlf=input
-   ````
+   ```
 
    ```shell
     cp .env.example .env
