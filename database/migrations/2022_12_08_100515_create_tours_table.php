@@ -8,10 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
@@ -22,9 +20,9 @@ return new class extends Migration
             $table->integer('nights');
             $table->string('image')->default('default.jpg');
             $table->foreignId('operators_id')->constrained('operators','id')->cascadeOnDelete();
-            $table->foreignId('rest_types_id')->constrained('rest_types','id')->cascadeOnDelete();
-            $table->foreignId('accomodations_id')->constrained('accomodations','id')->cascadeOnDelete();
-            $table->foreignId('meals_id')->constrained('meals','id')->cascadeOnDelete();
+            $table->foreignId('rest_types_id')->constrained('rest_types','id')->nullOnDelete();
+            $table->foreignId('accomodations_id')->constrained('accomodations','id')->nullOnDelete();
+            $table->foreignId('meals_id')->constrained('meals','id')->nullOnDelete();
             $table->text('description');
             $table->integer('price');
             $table->timestamps();
@@ -33,10 +31,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('tours');
     }
