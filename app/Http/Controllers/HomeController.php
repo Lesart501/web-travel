@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -16,31 +18,26 @@ class HomeController extends Controller
     private const BOOK_VALIDATOR = [
         'out_date' => 'required|date|after:today',
         'return_date' => 'required|date',
-        'phone' => 'required'
+        'phone' => 'required',
     ];
 
     private const ERROR_MESSAGES = [
         'required' => 'Заполните это поле',
-        'after:today' => 'Отправление должно быть не раньше, чем завтра'
+        'after:today' => 'Отправление должно быть не раньше, чем завтра',
     ];
 
-    /**
-     * Create a new controller instance.
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     */
     public function index(): Renderable
     {
         $orders = Order::latest()->where('users_id', Auth::user()->id);
+
         $context = [
             'orders' => $orders->get(),
-            'watched_orders' => $orders->where('statuses_id', 1)->get()
+            'watched_orders' => $orders->where('statuses_id', 1)->get(),
         ];
 
         return view('home', $context);
@@ -54,14 +51,19 @@ class HomeController extends Controller
     public function book(Request $request, Tour $tour): RedirectResponse
     {
         $validated = $request->validate(self::BOOK_VALIDATOR, self::ERROR_MESSAGES);
-        $id = Auth::user()->id;
-        DB::table('users')->where('id', '=', Auth::user()->id)->update(['phone' => $validated['phone']]);
+        $userId = Auth::user()->id;
+
+        DB::table('users')
+            ->where('id', '=', $userId)
+            ->update(['phone' => $validated['phone']])
+        ;
+
         Order::create([
             'statuses_id' => 1,
-            'users_id' => $id,
+            'users_id' => $userId,
             'tours_id' => $tour->id,
             'out_date' => $validated['out_date'],
-            'return_date' => $validated['return_date']
+            'return_date' => $validated['return_date'],
         ]);
 
         return redirect()->route('home');
@@ -69,9 +71,8 @@ class HomeController extends Controller
 
     public function cancelOrder(int $id): Response
     {
-        $order = Order::find($id);
-        $order->delete();
+        Order::find($id)->delete();
 
-        return response(['success' => 'Order has been cancelled']);
+        return response(['success' => true]);
     }
 }
