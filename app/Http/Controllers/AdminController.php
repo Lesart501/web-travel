@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -23,7 +25,7 @@ class AdminController extends Controller
         'image' => 'mimes:jpeg,bmp,png',
         'operator' => 'required|numeric',
         'description' => 'required',
-        'price' => 'required|numeric'
+        'price' => 'required|numeric',
     ];
 
     private const EDIT_VALIDATOR = [
@@ -34,14 +36,14 @@ class AdminController extends Controller
         'nights' => 'required|numeric',
         'operator' => 'required|numeric',
         'description' => 'required',
-        'price' => 'required|numeric'
+        'price' => 'required|numeric',
     ];
 
     private const ERROR_MESSAGES = [
         'required' => 'Заполните это поле',
         'max' => 'Значение не должно быть длиннее :max символов',
         'numeric' => 'Введите число',
-        'mimes' => 'Выберите файл формата: jpeg, bmp, png'
+        'mimes' => 'Выберите файл формата: jpeg, bmp, png',
     ];
 
     public function index(): Renderable
@@ -86,14 +88,28 @@ class AdminController extends Controller
     public function saveTour(Request $request): RedirectResponse
     {
         $validated = $request->validate(self::ADD_VALIDATOR, self::ERROR_MESSAGES);
-        $image = $request->file('image');
-        $image_name = time() . "_" . preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
-        $tmp = $image->storeAs('uploads/tours', $image_name, 'public');
-        Tour::create([
-            'name' => $validated['name'], 'place' => $validated['place'], 'countries_id' => $validated['country'],
-            'people' => $validated['people'], 'nights' => $validated['nights'], 'image' => $image_name, 'operators_id' => $validated['operator'],
-            'description' => $validated['description'], 'price' => $validated['price']
+
+        $tour = new Tour([
+            'name' => $validated['name'],
+            'place' => $validated['place'],
+            'countries_id' => $validated['country'],
+            'people' => $validated['people'],
+            'nights' => $validated['nights'],
+            'operators_id' => $validated['operator'],
+            'description' => $validated['description'],
+            'price' => $validated['price'],
         ]);
+
+        $image = $request->file('image');
+
+        if ($image) {
+            $image_name = time() . "_" . preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
+            $image->storeAs('uploads/tours', $image_name, 'public');
+
+            $tour->image = $image_name;
+        }
+
+        $tour->save();
 
         return redirect()->route('admin');
     }
