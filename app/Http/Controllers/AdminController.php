@@ -22,9 +22,9 @@ class AdminController extends Controller
         'country' => 'required|numeric',
         'people' => 'required|numeric',
         'nights' => 'required|numeric',
-        'image' => 'mimes:jpeg,bmp,png',
+        'image' => 'mimes:jpeg,bmp,png|nullable',
         'operator' => 'required|numeric',
-        'description' => 'required',
+        'description' => 'nullable|string',
         'price' => 'required|numeric',
     ];
 
@@ -34,8 +34,9 @@ class AdminController extends Controller
         'country' => 'required|numeric',
         'people' => 'required|numeric',
         'nights' => 'required|numeric',
+        'image' => 'mimes:jpeg,bmp,png|nullable',
         'operator' => 'required|numeric',
-        'description' => 'required',
+        'description' => 'nullable|string',
         'price' => 'required|numeric',
     ];
 
@@ -55,8 +56,16 @@ class AdminController extends Controller
 
     public function search(Request $request): Response
     {
-        $tours = Tour::where('name', 'Like', '%' . $request->search . '%')->orWhere('place', 'Like', '%' . $request->search . '%')
-            ->orWhereIn('countries_id', Country::select('id')->where('name', 'Like', '%' . $request->search . '%')->get())->get();
+        $tours = Tour::where('name', 'Like', '%' . $request->search . '%')
+            ->orWhere('place', 'Like', '%' . $request->search . '%')
+            ->orWhereIn(
+                'countries_id',
+                Country::select('id')
+                    ->where('name', 'Like', '%' . $request->search . '%')
+                    ->get()
+            )
+            ->get()
+        ;
 
         $output = '';
         foreach ($tours as $tour) {
@@ -123,19 +132,28 @@ class AdminController extends Controller
 
     public function updateTour(Request $request, Tour $tour): RedirectResponse
     {
-        if ($request->file('image') != '') {
-            $this->validate($request, ['image' => ['required', 'mimes:jpeg,gif,bmp,png', 'max:2048']]);
-            $image = $request->file('image');
-            $image_name = time() . "_" . preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
-            $tmp = $image->storeAs('uploads/tours', $image_name, 'public');
-            $tour->fill(['image' => $image_name]);
-        }
         $validated = $request->validate(self::EDIT_VALIDATOR, self::ERROR_MESSAGES);
+
         $tour->fill([
-            'name' => $validated['name'], 'place' => $validated['place'], 'countries_id' => $validated['country'],
-            'people' => $validated['people'], 'nights' => $validated['nights'], 'operators_id' => $validated['operator'],
-            'description' => $validated['description'], 'price' => $validated['price']
+            'name' => $validated['name'],
+            'place' => $validated['place'],
+            'countries_id' => $validated['country'],
+            'people' => $validated['people'],
+            'nights' => $validated['nights'],
+            'operators_id' => $validated['operator'],
+            'description' => $validated['description'],
+            'price' => $validated['price'],
         ]);
+
+        $image = $request->file('image');
+
+        if ($image) {
+            $image_name = time() . "_" . preg_replace('/\s+/', '_', strtolower($image->getClientOriginalName()));
+            $image->storeAs('uploads/tours', $image_name, 'public');
+
+            $tour->image = $image_name;
+        }
+
         $tour->save();
 
         return redirect()->route('admin');
@@ -169,8 +187,9 @@ class AdminController extends Controller
 
     public function saveStatus(Request $request, Order $order): RedirectResponse
     {
-        $order->fill(['statuses_id' => $request->status]);
-        $order->save();
+        $order->fill(['statuses_id' => $request->status])
+            ->save()
+        ;
 
         return redirect()->route('orders');
     }
